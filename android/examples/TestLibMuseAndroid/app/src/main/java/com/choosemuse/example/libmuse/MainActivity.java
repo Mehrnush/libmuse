@@ -77,7 +77,15 @@ import android.support.v4.content.ContextCompat;
  * 7. You can pause/resume data transmission with the button at the bottom of the screen.
  * 8. To disconnect from the headband, press "Disconnect"
  */
+
+
+
 public class MainActivity extends Activity implements OnClickListener {
+
+
+
+    //just to test
+    private final String test ="Test";
 
     /**
      * Tag used for logging purposes.
