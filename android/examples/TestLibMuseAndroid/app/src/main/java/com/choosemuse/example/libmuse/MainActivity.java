@@ -83,9 +83,7 @@ import android.support.v4.content.ContextCompat;
 public class MainActivity extends Activity implements OnClickListener {
 
 
-
-    //just to test
-    private final String test ="Test";
+    
 
     /**
      * Tag used for logging purposes.
