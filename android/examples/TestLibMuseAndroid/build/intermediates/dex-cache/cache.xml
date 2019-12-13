@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/mehrnoosh/libmuse_6.0.3/android/examples/TestLibMuseAndroid/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="/home/mehrnoosh/libmuse_6.0.3/android/examples/TestLibMuseAndroid/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.3.1_cd3c0b81dcf46f2f8043a9204d1d0ecb2d584cd1.jar" />
+    </item>
+    <item
+        jar="/home/mehrnoosh/libmuse_6.0.3/android/examples/TestLibMuseAndroid/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="/home/mehrnoosh/libmuse_6.0.3/android/examples/TestLibMuseAndroid/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.3.1_37e9faa0b003bca34baf6e6ece67cf55fead1a60.jar" />
+    </item>
+    <item
+        jar="/home/mehrnoosh/libmuse_6.0.3/android/examples/TestLibMuseAndroid/app/libs/libmuse_android.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="39ceeabf18cb8dc419db709a0fd4d26169a1126a">
+        <dex dex="/home/mehrnoosh/libmuse_6.0.3/android/examples/TestLibMuseAndroid/app/build/intermediates/pre-dexed/debug/libmuse_android_2c6ba9251f7b22a7894216a9836ae2562cc60932.jar" />
+    </item>
+    <item
+        jar="/home/mehrnoosh/libmuse_6.0.3/android/examples/TestLibMuseAndroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/mehrnoosh/libmuse_6.0.3/android/examples/TestLibMuseAndroid/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.3.1_7501370b92c87020e4f9e36a8b903dd3f79ea658.jar" />
+    </item>
+    <item
+        jar="/home/mehrnoosh/libmuse_6.0.3/android/examples/TestLibMuseAndroid/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="/home/mehrnoosh/libmuse_6.0.3/android/examples/TestLibMuseAndroid/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.3.1_8a712abdada61cd1ff5ed6de18793949eb5bfa56.jar" />
+    </item>
+    <item
+        jar="/home/mehrnoosh/libmuse_6.0.3/android/examples/TestLibMuseAndroid/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="/home/mehrnoosh/libmuse_6.0.3/android/examples/TestLibMuseAndroid/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.3.1_2c3dc979f18585eb2ae1b817b6ed01a6aae8688e.jar" />
+    </item>
+    <item
+        jar="/home/mehrnoosh/libmuse_6.0.3/android/examples/TestLibMuseAndroid/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="/home/mehrnoosh/libmuse_6.0.3/android/examples/TestLibMuseAndroid/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.3.1_196fa5fcb2335b6155dad15a1ef69d8a19e178d5.jar" />
+    </item>
+    <item
+        jar="/home/mehrnoosh/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/25.3.1/bf8841d29fa39e077730e7a91222c2ce269fa7c9/support-annotations-25.3.1.jar"
+        jumboMode="false"
+        revision="25.0.0"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="/home/mehrnoosh/libmuse_6.0.3/android/examples/TestLibMuseAndroid/app/build/intermediates/pre-dexed/debug/support-annotations-25.3.1_8a21919fe65f82d3d47af960b2b55e7badd4fcde.jar" />
+    </item>
+
+</items>
