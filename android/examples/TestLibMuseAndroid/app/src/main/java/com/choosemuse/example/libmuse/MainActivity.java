@@ -53,8 +53,21 @@ import android.widget.TextView;
 import android.bluetooth.BluetoothAdapter;
 
 
+
+
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+
+
+//import I need to block notification
+
+import android.content.Intent;
+import android.os.IBinder;
+import android.service.notification.NotificationListenerService;
+import android.service.notification.StatusBarNotification;
+
+
+
 
 /**
  * This example will illustrate how to connect to a Muse headband,
@@ -83,7 +96,7 @@ import android.support.v4.content.ContextCompat;
 public class MainActivity extends Activity implements OnClickListener {
 
 
-    
+
 
     /**
      * Tag used for logging purposes.
@@ -102,6 +115,7 @@ public class MainActivity extends Activity implements OnClickListener {
      * configuration and version information.
      */
     private Muse muse;
+
 
     /**
      * The ConnectionListener will be notified whenever there is a change in
@@ -267,10 +281,13 @@ public class MainActivity extends Activity implements OnClickListener {
                 muse.registerConnectionListener(connectionListener);
                 muse.registerDataListener(dataListener, MuseDataPacketType.EEG);
                 muse.registerDataListener(dataListener, MuseDataPacketType.ALPHA_RELATIVE);
+                //muse.registerDataListener(dataListener, MuseDataPacketType.BETA_RELATIVE);
+                //muse.registerDataListener(dataListener, MuseDataPacketType.THETA_RELATIVE);
                 muse.registerDataListener(dataListener, MuseDataPacketType.ACCELEROMETER);
                 muse.registerDataListener(dataListener, MuseDataPacketType.BATTERY);
                 muse.registerDataListener(dataListener, MuseDataPacketType.DRL_REF);
                 muse.registerDataListener(dataListener, MuseDataPacketType.QUANTIZATION);
+
 
                 // Initiate a connection to the headband and stream the data asynchronously.
                 muse.runAsynchronously();
@@ -414,8 +431,17 @@ public class MainActivity extends Activity implements OnClickListener {
     public void receiveMuseDataPacket(final MuseDataPacket p, final Muse muse) {
         writeDataPacketToFile(p);
 
+        // TODO → How this packages receive the data
+
+        //a limit to initialize the value with
+        int limit = 0;
+
         // valuesSize returns the number of data values contained in the packet.
         final long n = p.valuesSize();
+
+        //Test the value size n
+        System.out.print(n);
+
         switch (p.packetType()) {
             case EEG:
                 assert(eegBuffer.length >= n);
@@ -432,6 +458,12 @@ public class MainActivity extends Activity implements OnClickListener {
                 getEegChannelValues(alphaBuffer,p);
                 alphaStale = true;
                 break;
+
+                // TODO → we got the alpha relative Buffer with 6 places
+
+
+
+
             case BATTERY:
             case DRL_REF:
             case QUANTIZATION:
@@ -467,6 +499,14 @@ public class MainActivity extends Activity implements OnClickListener {
         buffer[3] = p.getEegChannelValue(Eeg.EEG4);
         buffer[4] = p.getEegChannelValue(Eeg.AUX_LEFT);
         buffer[5] = p.getEegChannelValue(Eeg.AUX_RIGHT);
+
+        //print to see what is saved in each buffer
+        System.out.print(buffer[0]);
+        System.out.print(buffer[1]);
+        System.out.print(buffer[2]);
+        System.out.print(buffer[3]);
+        System.out.print(buffer[4]);
+        System.out.print(buffer[5]);
     }
 
     private void getAccelValues(MuseDataPacket p) {
