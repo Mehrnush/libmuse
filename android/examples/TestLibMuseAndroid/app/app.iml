@@ -81,6 +81,7 @@
     <orderEntry type="jdk" jdkName="Android API 25 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="Gradle: com.android.support:support-annotations:25.3.1@jar" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.mcxiaoke.volley:library:1.0.19@jar" level="project" />
     <orderEntry type="library" exported="" name="Gradle: __local_aars__:/home/mehrnoosh/libmuse_6.0.3/android/examples/TestLibMuseAndroid/app/libs/libmuse_android.jar:unspecified@jar" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.android.support:support-v4:25.3.1@aar" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.android.support:support-compat:25.3.1@aar" level="project" />

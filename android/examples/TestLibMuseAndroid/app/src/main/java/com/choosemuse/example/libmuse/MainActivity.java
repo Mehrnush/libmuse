@@ -8,18 +8,26 @@ package com.choosemuse.example.libmuse;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.io.IOException;
 
 
 import java.io.File;
 import java.lang.ref.WeakReference;
+import java.util.HashMap;
 import java.util.List;
 
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.choosemuse.libmuse.Accelerometer;
 import com.choosemuse.libmuse.AnnotationData;
 import com.choosemuse.libmuse.ConnectionState;
@@ -54,12 +62,14 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Looper;
 import android.os.Handler;
+import android.service.voice.VoiceInteractionSession;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TabHost;
 import android.widget.TextView;
 import android.bluetooth.BluetoothAdapter;
 
@@ -69,15 +79,9 @@ import android.bluetooth.BluetoothAdapter;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
-
-//import I need to block notification
-
-import android.content.Intent;
-import android.os.IBinder;
-import android.service.notification.NotificationListenerService;
-import android.service.notification.StatusBarNotification;
-
-
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**
@@ -273,6 +277,60 @@ public class MainActivity extends Activity implements OnClickListener {
 
         // Start our asynchronous updates of the UI.
         handler.post(tickUi);
+
+
+        // Instantiate the RequestQueue
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="http://192.168.178.156/api/gDvhtROzH4LfPZbWqWzcqq-LBodBVekC5aUbpqPh/lights";
+
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("devicetype", "Brain-Lamp#mehrnoosh");
+        JSONObject jsonObject = new JSONObject(params);
+        jsonObject = null;
+
+        JsonObjectRequest jsonArrReq = new JsonObjectRequest(Request.Method.GET, url, jsonObject, new Response.Listener<JSONObject>() {
+
+
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("JSONPost", response.toString());
+
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("JSONPost", "Error:" + error.getMessage());
+
+            }
+        });
+
+
+        /**
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+
+                // Display the response
+                Log.i(TAG, "Response is: " + response);
+
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.i(TAG,"That didn't work!");
+            }
+        }); **/
+
+        //add the http request to the queue
+
+    queue.add(jsonArrReq);
+
     }
 
 
@@ -300,6 +358,7 @@ public class MainActivity extends Activity implements OnClickListener {
             manager.startListening();
 
         } else if (v.getId() == R.id.connect) {
+
 
             // The user has pressed the "Connect" button to connect to
             // the headband in the spinner.
@@ -475,6 +534,7 @@ public class MainActivity extends Activity implements OnClickListener {
             this.muse = null;
 
         }
+
     }
 
     /**
@@ -570,19 +630,22 @@ public class MainActivity extends Activity implements OnClickListener {
 
             case HSI_PRECISION:
                 assert (hci_precision.length >= n);
-                    values = getEegChannelValues(hci_precision, p);
-                    dataString += "quality" + p.timestamp();
+                    values = getEegQualityValue(hci_precision, p);
+                    Log.i(TAG, "quality_Report:");
+                    dataString += "quality," + p.timestamp() + ",";
                     dataString += values;
                     break;
 
+            case IS_GOOD:
+                assert (isGood.length >= n);
+                values = eegIsGood(isGood, p);
+                Log.i(TAG, "is good:");
+                dataString += "isGood," + p.timestamp() + ",";
+                dataString += values;
+                break;
 
 
-
-
-
-                // TODO → we got the alpha relative Buffer with 6 places
-
-
+            case EEG:
             case BATTERY:
             case DRL_REF:
             case QUANTIZATION:
@@ -625,7 +688,6 @@ public class MainActivity extends Activity implements OnClickListener {
         buffer[4] = p.getEegChannelValue(Eeg.AUX_LEFT);
         buffer[5] = p.getEegChannelValue(Eeg.AUX_RIGHT);
 
-        //print to see what is saved in each buffer
         Log.i(TAG,"buffer 0: " + buffer[0]);
         Log.i(TAG,"buffer 1: " + buffer[1]);
         Log.i(TAG,"buffer 2: " + buffer[2]);
@@ -636,6 +698,31 @@ public class MainActivity extends Activity implements OnClickListener {
 
         return buffer[0] + "," +buffer[1] + "," + buffer[2] + "," + buffer[3];
 
+    }
+
+    private String getEegQualityValue (double[] hci_buffer,MuseDataPacket p) {
+        hci_buffer[0] = p.getEegChannelValue(Eeg.EEG1);
+        hci_buffer[1]= p.getEegChannelValue(Eeg.EEG2);
+        hci_buffer[2] = p.getEegChannelValue(Eeg.EEG3);
+        hci_buffer[3] = p.getEegChannelValue(Eeg.EEG4);
+
+        Log.i(TAG,"buffer 0: " + hci_buffer[0]);
+        Log.i(TAG,"buffer 1: " + hci_buffer[1]);
+        Log.i(TAG,"buffer 2: " + hci_buffer[2]);
+        Log.i(TAG,"buffer 3: " + hci_buffer[3]);
+
+        return hci_buffer[0] + "," + hci_buffer[1] + "," + hci_buffer[2] + "," + hci_buffer[3];
+
+    }
+
+
+    private String eegIsGood (double[] isGoodBuffer, MuseDataPacket p) {
+        isGoodBuffer[0] = p.getEegChannelValue(Eeg.EEG1);
+        isGoodBuffer[1] = p.getEegChannelValue(Eeg.EEG2);
+        isGoodBuffer[2] = p.getEegChannelValue(Eeg.EEG3);
+        isGoodBuffer[3] = p.getEegChannelValue(Eeg.EEG4);
+
+        return isGoodBuffer[0]  + "," + isGoodBuffer[1] + "," + isGoodBuffer[2] + "," + isGoodBuffer[3];
     }
 
     private void getAccelValues(MuseDataPacket p) {
