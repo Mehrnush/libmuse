@@ -329,7 +329,37 @@ public class MainActivity extends Activity implements OnClickListener {
 
     }
 
-    public void changeTheLight() {
+    /**public void changeTheLight() {
+
+        // Instantiate the RequestQueue
+        RequestQueue queue = Volley.newRequestQueue(this);
+        Map<String, Object> params = new HashMap<String, Object>();
+        //Map<String ,String> params = new HashMap<String, String>()
+
+        JSONObject jsonObject = new JSONObject(params);
+
+        params.put("on", true);
+        params.put("hue", 65000);
+
+        //jsonObject = null;
+
+        JsonArrayRequest jsonArrReq = new JsonArrayRequest(Request.Method.PUT, url, jsonObject, new Response.Listener<JSONArray>() {
+
+
+            @Override
+            public void onResponse(JSONArray response) {
+                Log.d("JSONPost", response.toString());
+
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("JSONPost", "Error:" + error.getMessage());
+
+            }
+        });
 
         //electrodes on the forehead
         double betaAverage = (betaBuffer[1] + betaBuffer[2]) / 2;
@@ -340,12 +370,15 @@ public class MainActivity extends Activity implements OnClickListener {
         //distracted : a while loop to decrement or increment hue gradually
         //if > 0.5, means not concentrated enough
         if ( engagementLevel >= 0.5) {
-            // > TODO:change the accordingly
+            // > TODO:change the light accordingly
 
-            }
 
-            //Post a request to bridge
         }
+
+        //add the http request to the queue
+
+        queue.add(jsonArrReq);
+    } **/
 
 
     protected void onPause() {
