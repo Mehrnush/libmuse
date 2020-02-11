@@ -267,7 +267,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
         // Start up a thread for asynchronous file operations.
         // This is only needed if you want to do File I/O.
-        fileThread.start();
+        fileThread.start(); 
 
         //create the first line of muse_data.txt
 
@@ -275,36 +275,6 @@ public class MainActivity extends Activity implements OnClickListener {
         // Start our asynchronous updates of the UI.
         handler.post(tickUi);
 
-
-        // Instantiate the RequestQueue
-        RequestQueue queue = Volley.newRequestQueue(this);
-
-
-        Map<String, Object> params = new HashMap<String, Object>();
-        //Map<String ,String> params = new HashMap<String, String>()
-        params.put("on", true);
-        params.put("hue", 65000);
-
-        JSONObject jsonObject = new JSONObject(params);
-        //jsonObject = null;
-
-        JsonArrayRequest jsonArrReq = new JsonArrayRequest(Request.Method.PUT, url, jsonObject, new Response.Listener<JSONArray>() {
-
-
-            @Override
-            public void onResponse(JSONArray response) {
-                Log.d("JSONPost", response.toString());
-
-
-            }
-
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d("JSONPost", "Error:" + error.getMessage());
-
-            }
-        });
 
         /**
          StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -323,13 +293,9 @@ public class MainActivity extends Activity implements OnClickListener {
         }
         }); **/
 
-        //add the http request to the queue
-
-        queue.add(jsonArrReq);
-
     }
 
-    /**public void changeTheLight() {
+    public void changeTheLight() {
 
         // Instantiate the RequestQueue
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -378,7 +344,7 @@ public class MainActivity extends Activity implements OnClickListener {
         //add the http request to the queue
 
         queue.add(jsonArrReq);
-    } **/
+    }
 
 
     protected void onPause() {
