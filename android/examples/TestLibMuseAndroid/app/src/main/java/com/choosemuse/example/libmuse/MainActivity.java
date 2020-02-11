@@ -608,7 +608,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 
         if (alphaBuffer.length > 0 && betaBuffer.length > 0 && thetaBuffer.length > 0) {
-            changeTheLight();
+            //changeTheLight();
         }
         switch (p.packetType()) {
             /**case EEG:
