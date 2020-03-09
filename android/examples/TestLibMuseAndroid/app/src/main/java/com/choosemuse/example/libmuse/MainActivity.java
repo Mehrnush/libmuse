@@ -15,16 +15,22 @@ import java.io.IOException;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.security.PublicKey;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
+import com.android.volley.Cache;
+import com.android.volley.Network;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.BasicNetwork;
+import com.android.volley.toolbox.DiskBasedCache;
+import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
@@ -81,6 +87,9 @@ import android.support.v4.content.ContextCompat;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+
+
 
 
 /**
@@ -230,9 +239,23 @@ public class MainActivity extends Activity implements OnClickListener {
     //--------------------------------------
     // Lifecycle / Connection code
 
-    // Instantiate the RequestQueue
-    RequestQueue queue = Volley.newRequestQueue(this);
-    String url = "http://192.168.178.156/api/gDvhtROzH4LfPZbWqWzcqq-LBodBVekC5aUbpqPh/lights/4/state";
+
+    //192.168.178.161
+    String url = "http://192.168.0.100/api/2PmPIT8bygMPV9M3WFKLHRLJ8zzep0wHycysuq29/lights/4/state";
+    Map<String, Object> params = new HashMap<String, Object>();
+    JSONObject jsonObject;
+
+    ArrayList<Double> engagementArray = new ArrayList<>();
+
+    long startTime;
+    long endTime;
+    long timeDifference;
+
+
+    //to start with white color and no saturation
+
+    int hue = 65535;
+    int sat = 170;
 
 
     @Override
@@ -276,10 +299,15 @@ public class MainActivity extends Activity implements OnClickListener {
         handler.post(tickUi);
 
 
-        /**
-         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+        RequestQueue queue = Volley.newRequestQueue(this);
 
-        @Override public void onResponse(String response) {
+
+        //get the infos about light status
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+
+        @Override
+
+        public void onResponse(String response) {
 
         // Display the response
         Log.i(TAG, "Response is: " + response);
@@ -288,26 +316,22 @@ public class MainActivity extends Activity implements OnClickListener {
         }
 
         }, new Response.ErrorListener() {
-        @Override public void onErrorResponse(VolleyError error) {
+        @Override
+
+        public void onErrorResponse(VolleyError error) {
         Log.i(TAG,"That didn't work!");
         }
-        }); **/
+        });
 
-    }
+         params.put("on", true);
+         params.put("hue", hue);
+         params.put("sat", sat);
 
-    public void changeTheLight() {
-
-        // Instantiate the RequestQueue
-        RequestQueue queue = Volley.newRequestQueue(this);
-        Map<String, Object> params = new HashMap<String, Object>();
-        //Map<String ,String> params = new HashMap<String, String>()
-
-        JSONObject jsonObject = new JSONObject(params);
-
-        params.put("on", true);
-        params.put("hue", 65000);
+        jsonObject = new JSONObject(params);
 
         //jsonObject = null;
+
+        //TODO:Thing about the order, first param.put() then this part or write it in another function
 
         JsonArrayRequest jsonArrReq = new JsonArrayRequest(Request.Method.PUT, url, jsonObject, new Response.Listener<JSONArray>() {
 
@@ -327,24 +351,203 @@ public class MainActivity extends Activity implements OnClickListener {
             }
         });
 
+        queue.add(jsonArrReq);
+
+        //queue.start();
+        queue.add(stringRequest);
+
+    }
+
+    public void changeTheLight() {
+
+        /**value between 0 and 65535. Both 0 and 65535 are red,
+         *
+         *
+         * 25500 is green and 46920 is blue. value between 0 and 65535. Both 0 and 65535 are red,
+         * 25500 is green and 46920 is blue **/
+
+        //TODO:check how often the packet comes
+
+        startTime = System.currentTimeMillis();
+
+
+        //Map<String ,String> params = new HashMap<String, String>()
+
+
         //electrodes on the forehead
         double betaAverage = (betaBuffer[1] + betaBuffer[2]) / 2;
         double alphaAverage = (alphaBuffer[1] + alphaBuffer[2]) / 2;
         double thetaAverage = (thetaBuffer[1] + thetaBuffer[2]) / 2;
 
         double engagementLevel = betaAverage / alphaAverage + thetaAverage;
-        //distracted : a while loop to decrement or increment hue gradually
-        //if > 0.5, means not concentrated enough
-        if ( engagementLevel >= 0.5) {
-            // > TODO:change the light accordingly
+        //distracted : a while loop to decrement or increment Hue gradually
 
-
+        //keep adding elements into the array until it is full with 1000
+        //TODO: 2-3 minutes computing the average
+        if (engagementArray.size() < 500 ) {
+            engagementArray.add(engagementLevel);
         }
 
-        //add the http request to the queue
 
-        queue.add(jsonArrReq);
+        if (engagementArray.size() == 500) {
+
+            double sum = 0;
+            double engagementAverage = 0;
+            //TODO:calculate an average of all 1000 engagements
+
+            for(int n=0; n < engagementArray.size(); n++) {
+                sum += engagementArray.get(n);
+            }
+
+
+            engagementAverage = sum /engagementArray.size();
+
+
+            engagementArray.clear();
+
+            //TODO:find out an strategy to reduce saturation
+            //TODO:check how blue the 46920 is and how much it can increase remaining blue
+
+            /**case 1: good concentration
+             * */
+            if (engagementAverage >= 0.5) {
+                Log.i(TAG, "good concentration");
+
+                //TODO:how strong is sat:180 in a white room → need to be tested in the room
+                if(sat > 180) {
+                    sat = 180;
+                    Log.i(TAG, "sat is: "+ sat);
+                    params.put("sat", sat);
+                    jsonObject = new JSONObject(params);
+                    sendRequest();
+                }
+
+
+                /**increase saturation up to 155
+                if (sat < 155) {
+                    sat += 5;https://www.youtube.com/watch?v=YTRiH_rzDUw
+                    params.put("sat", sat);
+                    jsonObject = new JSONObject(params);
+                    sendRequest();
+                }**/
+                if (hue < 46920) {
+                    //increase saturation gradually to help staying focused
+                    hue += 500;
+                    Log.i(TAG, "hue is(good concentration): "+ hue);
+                    params.put("hue", hue);
+                    jsonObject = new JSONObject(params);
+                    sendRequest();
+                }
+
+                //in case hue is red
+                if (hue > 46920) {
+                    Log.i(TAG, "hue from red to blue in case of good concentration");
+                    hue = 46920;
+                    Log.i(TAG, "hue is(good concentration): "+ hue);
+                    params.put("hue", hue);
+                    jsonObject = new JSONObject(params);
+                    sendRequest();
+                }
+
+            }
+
+            //TODO: which number represents the best engagement?
+            /**case 2: not concentrated enough*/
+            if (0.3 <= engagementAverage && engagementAverage <= 0.5) {
+
+                //TODO: maybe add some time measuremnet hier, if the person be hier more than 5 minutes then add orange?
+                Log.i(TAG, "not enough concentrated");
+
+                //TODO: If saturation is above 250? add some orange?
+                if (sat < 260) {
+                    sat += 10;
+                    Log.i(TAG, "sat is: "+ sat);
+                    params.put("sat", sat);
+                    jsonObject = new JSONObject(params);
+                    sendRequest();
+                }
+
+                if (hue < 46920) {
+                    //increase hue gradually to bring the person back to focus
+                    hue += 500;
+                    Log.i(TAG, "hue is(not enough): "+ hue);
+                    params.put("hue",hue);
+                    jsonObject = new JSONObject(params);
+                    sendRequest();
+                }
+
+                //TODO:in case hue is not blue anymore: do we want to add some orange also hier?
+                if (hue > 46920) {
+                    hue = 46920;
+                    params.put("hue", hue);
+                    Log.i(TAG, "hue is(not enough): "+ hue);
+                    jsonObject = new JSONObject(params);
+                    sendRequest();
+                }
+            }
+
+            /**very poor concentration
+             *
+             *
+             */
+            if (engagementAverage <= 0.2) {
+                Log.i(TAG, "very poor concentration");
+
+                //TODO:Should I here change the hue to light red at the beginning instead of increasing it
+                if (hue < 65535) {
+                    //change the hue and saturation both to bring back to focus
+                    hue += 20000;
+                    params.put("hue", hue);
+                    Log.i(TAG, "hue is(very poor): "+ hue);
+                    jsonObject = new JSONObject(params);
+                    sendRequest();
+                }
+
+                if (sat > 170) {
+                    sat = 170;
+                    params.put("sat", sat);
+                    jsonObject = new JSONObject(params);
+                    sendRequest();
+                }
+
+                if (sat < 170) {
+                    sat += 10;
+                    params.put("sat", sat);
+                    jsonObject = new JSONObject();
+                    sendRequest();
+                }
+            }
+        }
     }
+
+
+        public void sendRequest() {
+
+            Log.i(TAG, "sendRequest is called");
+
+            RequestQueue queue = Volley.newRequestQueue(this);
+
+            JsonArrayRequest jsonArrReq = new JsonArrayRequest(Request.Method.PUT, url, jsonObject, new Response.Listener<JSONArray>() {
+
+
+                @Override
+                public void onResponse(JSONArray response) {
+                    Log.i("JSONPost", response.toString());
+
+
+                }
+
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("JSONPost", "Error:" + error.getMessage());
+
+                }
+            });
+
+            queue.add(jsonArrReq);
+
+        }
 
 
     protected void onPause() {
@@ -593,6 +796,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 assert (alphaBuffer.length >= n);
                 Log.i(TAG, "timestamp for alpha_relative: " + p.timestamp());
                 values = getEegChannelValues(alphaBuffer, p);
+                changeTheLight();
                 dataString += "alpha_relative," + p.timestamp() + ",";
                 dataString += values;
                 alphaStale = true;
@@ -601,6 +805,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 assert (betaBuffer.length >= n);
                 Log.i(TAG, "timestamp for beta_relative: " + p.timestamp());
                 values = getEegChannelValues(betaBuffer, p);
+                changeTheLight();
                 dataString += "beta_relative," + p.timestamp() + ",";
                 dataString += values;
                 betaStale = true;
@@ -610,6 +815,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 assert (thetaBuffer.length >= n);
                 Log.i(TAG, "timestamp for theta_relative: " + p.timestamp());
                 values = getEegChannelValues(alphaBuffer, p);
+                changeTheLight();
                 dataString += "theta_relative," + p.timestamp() + ",";
                 dataString += values;
                 thetaStale = true;
@@ -698,6 +904,7 @@ public class MainActivity extends Activity implements OnClickListener {
      * getValue methods.
      */
     private String getEegChannelValues(double[] buffer, MuseDataPacket p) {
+
         buffer[0] = p.getEegChannelValue(Eeg.EEG1);
         buffer[1] = p.getEegChannelValue(Eeg.EEG2);
         buffer[2] = p.getEegChannelValue(Eeg.EEG3);
