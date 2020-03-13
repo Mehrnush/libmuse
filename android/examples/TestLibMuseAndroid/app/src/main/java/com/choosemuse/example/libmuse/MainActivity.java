@@ -254,8 +254,8 @@ public class MainActivity extends Activity implements OnClickListener {
 
     //to start with white color and no saturation
 
-    int hue = 65535;
-    int sat = 170;
+    int hue = 30000;
+    int sat = 0;
 
 
     @Override
@@ -493,7 +493,7 @@ public class MainActivity extends Activity implements OnClickListener {
             if (engagementAverage <= 0.2) {
                 Log.i(TAG, "very poor concentration");
 
-                //TODO:Should I here change the hue to light red at the beginning instead of increasing it
+                //TODO:Should I increase saturation if one stays here for long? → add time
                 if (hue < 65535) {
                     //change the hue and saturation both to bring back to focus
                     hue += 20000;
