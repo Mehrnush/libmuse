@@ -241,21 +241,30 @@ public class MainActivity extends Activity implements OnClickListener {
 
 
     //192.168.178.161
-    String url = "http://192.168.0.100/api/2PmPIT8bygMPV9M3WFKLHRLJ8zzep0wHycysuq29/lights/4/state";
+    String url = "http://192.168.178.54/api/2PmPIT8bygMPV9M3WFKLHRLJ8zzep0wHycysuq29/lights/4/state";
     Map<String, Object> params = new HashMap<String, Object>();
     JSONObject jsonObject;
 
     ArrayList<Double> engagementArray = new ArrayList<>();
+    ArrayList<Double> tbrArray = new ArrayList<>();
+//    ArrayList<Double> fatigueArray1 = new ArrayList<>();
+//    ArrayList<Double> fatigueArray2 = new ArrayList<>();
+//    ArrayList<Double> alphaArray = new ArrayList<>();
+//    ArrayList<Double> betaArray = new ArrayList<>();
+//    ArrayList<Double> thetaArray = new ArrayList<>();
 
-    long startTime;
-    long endTime;
-    long timeDifference;
+
+
 
 
     //to start with white color and no saturation
 
     int hue = 30000;
     int sat = 0;
+
+    long start = 0;
+    long passed = 0;
+    long timeAdded = 0;
 
 
     @Override
@@ -360,6 +369,13 @@ public class MainActivity extends Activity implements OnClickListener {
 
     public void changeTheLight() {
 
+        long now = System.nanoTime();
+        Log.i(TAG, "nanoTime " + now);
+
+
+
+
+
         /**value between 0 and 65535. Both 0 and 65535 are red,
          *
          *
@@ -368,54 +384,84 @@ public class MainActivity extends Activity implements OnClickListener {
 
         //TODO:check how often the packet comes
 
-        startTime = System.currentTimeMillis();
 
 
         //Map<String ,String> params = new HashMap<String, String>()
 
 
         //electrodes on the forehead
-        double betaAverage = (betaBuffer[1] + betaBuffer[2]) / 2;
-        double alphaAverage = (alphaBuffer[1] + alphaBuffer[2]) / 2;
-        double thetaAverage = (thetaBuffer[1] + thetaBuffer[2]) / 2;
+        double betaAverage = (betaBuffer[1] + betaBuffer[2] + betaBuffer[3]) / 3;
+        Log.i(TAG, "betaAverage " + betaAverage);
+        double alphaAverage = (alphaBuffer[1] + alphaBuffer[2] + alphaBuffer[3]) / 3;
+        double thetaAverage = (thetaBuffer[1] + thetaBuffer[2] +thetaBuffer [3]) / 3;
 
         double engagementLevel = betaAverage / alphaAverage + thetaAverage;
+        double tbr = thetaAverage / betaAverage;
+        //increase
+        //double fatigueRatio1 = (alphaAverage + thetaAverage) / betaAverage;
+        //decrease
+        //double fatigueRatio2 =  thetaAverage /alphaAverage;
         //distracted : a while loop to decrement or increment Hue gradually
 
-        //keep adding elements into the array until it is full with 1000
         //TODO: 2-3 minutes computing the average
-        if (engagementArray.size() < 500 ) {
+        if (engagementArray.size() < 1000 && tbrArray.size() < 1000) {
             engagementArray.add(engagementLevel);
+            tbrArray.add(tbr);
+
+
+
         }
 
+        if (engagementArray.size() == 1000 && tbrArray.size() == 1000) {
 
-        if (engagementArray.size() == 500) {
-
-            double sum = 0;
+            double engagement_sum = 0;
+            double tbr_sum = 0;
             double engagementAverage = 0;
+            double tbrAverage = 0;
+            //double fatigueAverage1 = 0;
+            //double fatigueAverage2 = 0;
+            //double fatigue_sum1 = 0;
+            //double fatigue_sum2 = 0;
             //TODO:calculate an average of all 1000 engagements
 
-            for(int n=0; n < engagementArray.size(); n++) {
-                sum += engagementArray.get(n);
+            for(int n=0; n <= engagementArray.size() && n <= tbrArray.size(); n++) {
+                engagement_sum += engagementArray.get(n);
+                tbr_sum += tbrArray.get(n);
+
             }
 
 
-            engagementAverage = sum /engagementArray.size();
+
+            engagementAverage = engagement_sum /engagementArray.size();
+            tbrAverage = tbr_sum/tbrArray.size();
+            //fatigueAverage1 = fatigue_sum1 /fatigueArray1.size();
+            //fatigueAverage2 = fatigue_sum2/fatigueArray2.size();
+            Log.i(TAG, "enegagementAverage " + engagementAverage);
+            Log.i(TAG, "tbrAverage " + tbrAverage);
+            //Log.i(TAG, "fatigueAverafe1 " + fatigueAverage1);
+            //Log.i(TAG, "fatigueAverage2 " + fatigueAverage2);
+
+          /*  TextView averageEng = (TextView) findViewById(R.id.averageEng);
+            averageEng.setText(String.format("%6.2.f", engagementAverage));*/
 
 
             engagementArray.clear();
+            tbrArray.clear();
+            //fatigueArray1.clear();
+            //fatigueArray2.clear();
 
-            //TODO:find out an strategy to reduce saturation
             //TODO:check how blue the 46920 is and how much it can increase remaining blue
-
+            //TODO: Find the baseline
             /**case 1: good concentration
              * */
-            if (engagementAverage >= 0.5) {
+            if (engagementAverage >= 0.54) {
+
+                timeAdded = 0;
                 Log.i(TAG, "good concentration");
 
                 //TODO:how strong is sat:180 in a white room → need to be tested in the room
-                if(sat > 180) {
-                    sat = 180;
+                if(sat > 200) {
+                    sat = 200;
                     Log.i(TAG, "sat is: "+ sat);
                     params.put("sat", sat);
                     jsonObject = new JSONObject(params);
@@ -425,7 +471,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
                 /**increase saturation up to 155
                 if (sat < 155) {
-                    sat += 5;https://www.youtube.com/watch?v=YTRiH_rzDUw
+                    sat += 5
                     params.put("sat", sat);
                     jsonObject = new JSONObject(params);
                     sendRequest();
@@ -433,8 +479,11 @@ public class MainActivity extends Activity implements OnClickListener {
                 if (hue < 46920) {
                     //increase saturation gradually to help staying focused
                     hue += 500;
+                    sat += 10;
                     Log.i(TAG, "hue is(good concentration): "+ hue);
+                    Log.i(TAG, "sat is (good concentration)" + sat);
                     params.put("hue", hue);
+                    params.put("sat", sat);
                     jsonObject = new JSONObject(params);
                     sendRequest();
                 }
@@ -452,13 +501,34 @@ public class MainActivity extends Activity implements OnClickListener {
             }
 
             //TODO: which number represents the best engagement?
+            //TODO:Add theta/beta ration and Beta alone to it
             /**case 2: not concentrated enough*/
             if (0.3 <= engagementAverage && engagementAverage <= 0.5) {
-
-                //TODO: maybe add some time measuremnet hier, if the person be hier more than 5 minutes then add orange?
                 Log.i(TAG, "not enough concentrated");
 
-                //TODO: If saturation is above 250? add some orange?
+
+                //in case the concentration rate wont change for 10 minutes
+
+                start = System.nanoTime();
+                Log.i(TAG, "start " + start);
+                passed = start - now;
+                timeAdded += passed;
+                Log.i(TAG, "timeAdded " + timeAdded / Math.pow(10,9)) ;
+
+
+                if ((timeAdded / Math.pow(10,9)) > 0.1 ) {
+                    hue = 65000;
+                    sat = 200;
+                    params.put("hue", hue);
+                    params.put("sat", sat);
+                    jsonObject = new JSONObject(params);
+                    sendRequest();
+                    Log.i(TAG, "more than 10 minutes " + hue);
+                    timeAdded = 0;
+
+                }
+
+
                 if (sat < 260) {
                     sat += 10;
                     Log.i(TAG, "sat is: "+ sat);
@@ -491,6 +561,7 @@ public class MainActivity extends Activity implements OnClickListener {
              *
              */
             if (engagementAverage <= 0.2) {
+                timeAdded = 0;
                 Log.i(TAG, "very poor concentration");
 
                 //TODO:Should I increase saturation if one stays here for long? → add time
@@ -796,29 +867,30 @@ public class MainActivity extends Activity implements OnClickListener {
                 assert (alphaBuffer.length >= n);
                 Log.i(TAG, "timestamp for alpha_relative: " + p.timestamp());
                 values = getEegChannelValues(alphaBuffer, p);
+                alphaStale = true;
                 changeTheLight();
                 dataString += "alpha_relative," + p.timestamp() + ",";
                 dataString += values;
-                alphaStale = true;
                 break;
             case BETA_RELATIVE:
                 assert (betaBuffer.length >= n);
                 Log.i(TAG, "timestamp for beta_relative: " + p.timestamp());
+                betaStale = true;
                 values = getEegChannelValues(betaBuffer, p);
                 changeTheLight();
                 dataString += "beta_relative," + p.timestamp() + ",";
                 dataString += values;
-                betaStale = true;
                 break;
 
             case THETA_RELATIVE:
                 assert (thetaBuffer.length >= n);
                 Log.i(TAG, "timestamp for theta_relative: " + p.timestamp());
-                values = getEegChannelValues(alphaBuffer, p);
+                values = getEegChannelValues(thetaBuffer, p);
+                thetaStale = true;
+                Log.i(TAG, "thetaStale" + thetaStale);
                 changeTheLight();
                 dataString += "theta_relative," + p.timestamp() + ",";
                 dataString += values;
-                thetaStale = true;
                 break;
 
             case ALPHA_ABSOLUTE:
@@ -999,6 +1071,13 @@ public class MainActivity extends Activity implements OnClickListener {
             if (alphaStale) {
                 updateAlpha();
             }
+
+            if (betaStale) {
+                updateBeta();
+            }
+            if (thetaStale){
+                updateTheta();
+            }
             handler.postDelayed(tickUi, 1000 / 60);
         }
     };
@@ -1040,6 +1119,45 @@ public class MainActivity extends Activity implements OnClickListener {
         TextView elem4 = (TextView) findViewById(R.id.elem4);
         elem4.setText(String.format("%6.2f", alphaBuffer[3]));
     }
+
+    private void updateBeta() {
+        TextView beta1 = (TextView) findViewById(R.id.beta1);
+        beta1.setText(String.format("%6.2f", betaBuffer[0]));
+        TextView beta2 = (TextView) findViewById(R.id.beta2);
+        beta2.setText(String.format("%6.2f", betaBuffer[1]));
+        TextView beta3 = (TextView) findViewById(R.id.beta3);
+        beta3.setText(String.format("%6.2f", betaBuffer[2]));
+        TextView beta4 = (TextView) findViewById(R.id.beta4);
+        beta4.setText(String.format("%6.2f", betaBuffer[3]));
+
+    }
+
+    private void updateTheta() {
+        TextView theta1 = (TextView) findViewById(R.id.theta1);
+        theta1.setText(String.format("%6.2f", thetaBuffer[0]));
+        TextView theta2 = (TextView) findViewById(R.id.theta2);
+        theta2.setText(String.format("%6.2f", thetaBuffer[1]));
+        TextView theta3 = (TextView) findViewById(R.id.theta3);
+        theta3.setText(String.format("%6.2f", thetaBuffer[2]));
+        TextView theta4 = (TextView) findViewById(R.id.theta4);
+        theta4.setText(String.format("%6.2f", thetaBuffer[3]));
+
+
+    }
+/*
+    private void updateQuality() {
+
+        TextView quality1 = (TextView) findViewById(R.id.quality1);
+        quality1.setText(String.format("%6.2f", isGood[1]));
+        TextView quality2 = (TextView) findViewById(R.id.quality2);
+        quality2.setText(String.format("%6.2f", isGood[2]));
+        TextView quality3 = (TextView) findViewById(R.id.quality3);
+        quality3.setText(String.format("%6.2f", isGood[3]));
+        TextView quality4 = (TextView) findViewById(R.id.quality4);
+        quality4.setText(String.format("%6.2f", isGood[4]));
+
+    }*/
+
 
 
     //--------------------------------------

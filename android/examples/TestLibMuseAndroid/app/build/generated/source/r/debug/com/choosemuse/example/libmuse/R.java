@@ -21,7 +21,11 @@ public final class R {
         public static final int acc_x=0x7f080009;
         public static final int acc_y=0x7f08000a;
         public static final int acc_z=0x7f08000b;
-        public static final int action_settings=0x7f080012;
+        public static final int action_settings=0x7f08001a;
+        public static final int beta1=0x7f080010;
+        public static final int beta2=0x7f080011;
+        public static final int beta3=0x7f080012;
+        public static final int beta4=0x7f080013;
         public static final int con_status=0x7f080004;
         public static final int connect=0x7f080002;
         public static final int disconnect=0x7f080003;
@@ -34,9 +38,13 @@ public final class R {
         public static final int elem3=0x7f08000e;
         public static final int elem4=0x7f08000f;
         public static final int muses_spinner=0x7f080000;
-        public static final int pause=0x7f080011;
+        public static final int pause=0x7f080019;
         public static final int refresh=0x7f080001;
-        public static final int version=0x7f080010;
+        public static final int theta1=0x7f080014;
+        public static final int theta2=0x7f080015;
+        public static final int theta3=0x7f080016;
+        public static final int theta4=0x7f080017;
+        public static final int version=0x7f080018;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -57,14 +65,17 @@ public final class R {
         public static final int init_val=0x7f060009;
         public static final int msg_count=0x7f06000a;
         public static final int muse_elem=0x7f06000b;
-        public static final int pause=0x7f06000c;
-        public static final int permission_dialog_description=0x7f06000d;
-        public static final int permission_dialog_title=0x7f06000e;
-        public static final int permission_dialog_understand=0x7f06000f;
-        public static final int refresh=0x7f060010;
-        public static final int status=0x7f060011;
-        public static final int undefined=0x7f060012;
-        public static final int version=0x7f060013;
+        public static final int muse_elem2=0x7f06000c;
+        public static final int muse_elem3=0x7f06000d;
+        public static final int muse_elem4=0x7f06000e;
+        public static final int pause=0x7f06000f;
+        public static final int permission_dialog_description=0x7f060010;
+        public static final int permission_dialog_title=0x7f060011;
+        public static final int permission_dialog_understand=0x7f060012;
+        public static final int refresh=0x7f060013;
+        public static final int status=0x7f060014;
+        public static final int undefined=0x7f060015;
+        public static final int version=0x7f060016;
     }
     public static final class style {
         /**  API 11 theme customizations can go here. 
