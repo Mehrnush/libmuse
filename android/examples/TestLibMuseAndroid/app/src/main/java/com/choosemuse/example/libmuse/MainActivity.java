@@ -390,10 +390,10 @@ public class MainActivity extends Activity implements OnClickListener {
 
 
         //electrodes on the forehead
-        double betaAverage = (betaBuffer[1] + betaBuffer[2] + betaBuffer[3]) / 3;
+        double betaAverage = (betaBuffer[2] + betaBuffer[3]) / 2;
         Log.i(TAG, "betaAverage " + betaAverage);
-        double alphaAverage = (alphaBuffer[1] + alphaBuffer[2] + alphaBuffer[3]) / 3;
-        double thetaAverage = (thetaBuffer[1] + thetaBuffer[2] +thetaBuffer [3]) / 3;
+        double alphaAverage = (alphaBuffer[2] + alphaBuffer[3]) / 2;
+        double thetaAverage = (thetaBuffer[2] + thetaBuffer[3] ) / 2;
 
         double engagementLevel = betaAverage / alphaAverage + thetaAverage;
         double tbr = thetaAverage / betaAverage;
@@ -406,7 +406,7 @@ public class MainActivity extends Activity implements OnClickListener {
         //TODO: 2-3 minutes computing the average
         if (engagementArray.size() < 1000 && tbrArray.size() < 1000) {
             engagementArray.add(engagementLevel);
-            tbrArray.add(tbr);
+            //tbrArray.add(tbr);
 
 
 
@@ -433,7 +433,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 
             engagementAverage = engagement_sum /engagementArray.size();
-            tbrAverage = tbr_sum/tbrArray.size();
+            //tbrAverage = tbr_sum/tbrArray.size();
             //fatigueAverage1 = fatigue_sum1 /fatigueArray1.size();
             //fatigueAverage2 = fatigue_sum2/fatigueArray2.size();
             Log.i(TAG, "enegagementAverage " + engagementAverage);
@@ -446,7 +446,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 
             engagementArray.clear();
-            tbrArray.clear();
+            //tbrArray.clear();
             //fatigueArray1.clear();
             //fatigueArray2.clear();
 
@@ -508,7 +508,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 
                 //in case the concentration rate wont change for 10 minutes
-
+/*
                 start = System.nanoTime();
                 Log.i(TAG, "start " + start);
                 passed = start - now;
@@ -526,7 +526,7 @@ public class MainActivity extends Activity implements OnClickListener {
                     Log.i(TAG, "more than 10 minutes " + hue);
                     timeAdded = 0;
 
-                }
+                }*/
 
 
                 if (sat < 260) {
