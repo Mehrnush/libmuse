@@ -21,7 +21,8 @@ public final class R {
         public static final int acc_x=0x7f080009;
         public static final int acc_y=0x7f08000a;
         public static final int acc_z=0x7f08000b;
-        public static final int action_settings=0x7f08001a;
+        public static final int action_settings=0x7f08001f;
+        public static final int averageEng=0x7f08001e;
         public static final int beta1=0x7f080010;
         public static final int beta2=0x7f080011;
         public static final int beta3=0x7f080012;
@@ -39,6 +40,10 @@ public final class R {
         public static final int elem4=0x7f08000f;
         public static final int muses_spinner=0x7f080000;
         public static final int pause=0x7f080019;
+        public static final int quality1=0x7f08001a;
+        public static final int quality2=0x7f08001b;
+        public static final int quality3=0x7f08001c;
+        public static final int quality4=0x7f08001d;
         public static final int refresh=0x7f080001;
         public static final int theta1=0x7f080014;
         public static final int theta2=0x7f080015;
