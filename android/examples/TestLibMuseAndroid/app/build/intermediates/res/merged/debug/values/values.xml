@@ -14,6 +14,9 @@
     <string name="init_val">0.0</string>
     <string name="msg_count">Msg number, size: </string>
     <string name="muse_elem">Alpha relative:</string>
+    <string name="muse_elem2">betaRelative</string>
+    <string name="muse_elem3">thetaRelative</string>
+    <string name="muse_elem4">quality</string>
     <string name="pause">Pause/Resume</string>
     <string name="permission_dialog_description">Muse needs a few permissions to work properly. On the next screens, tap "Allow" to proceed. If you deny, Muse will not work properly until you go into your Android settings and allow.</string>
     <string name="permission_dialog_title">Muse Needs Your Permission</string>

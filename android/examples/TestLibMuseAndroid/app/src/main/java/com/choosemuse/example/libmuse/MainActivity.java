@@ -814,7 +814,7 @@ public class MainActivity extends Activity implements OnClickListener {
             case THETA_RELATIVE:
                 assert (thetaBuffer.length >= n);
                 Log.i(TAG, "timestamp for theta_relative: " + p.timestamp());
-                values = getEegChannelValues(alphaBuffer, p);
+                values = getEegChannelValues(thetaBuffer, p);
                 changeTheLight();
                 dataString += "theta_relative," + p.timestamp() + ",";
                 dataString += values;
@@ -999,6 +999,13 @@ public class MainActivity extends Activity implements OnClickListener {
             if (alphaStale) {
                 updateAlpha();
             }
+
+            if (betaStale) {
+                updateBeta();
+            }
+            if (thetaStale){
+                updateTheta();
+            }
             handler.postDelayed(tickUi, 1000 / 60);
         }
     };
@@ -1041,6 +1048,30 @@ public class MainActivity extends Activity implements OnClickListener {
         elem4.setText(String.format("%6.2f", alphaBuffer[3]));
     }
 
+    private void updateBeta() {
+        TextView beta1 = (TextView) findViewById(R.id.beta1);
+        beta1.setText(String.format("%6.2f", betaBuffer[0]));
+        TextView beta2 = (TextView) findViewById(R.id.beta2);
+        beta2.setText(String.format("%6.2f", betaBuffer[1]));
+        TextView beta3 = (TextView) findViewById(R.id.beta3);
+        beta3.setText(String.format("%6.2f", betaBuffer[2]));
+        TextView beta4 = (TextView) findViewById(R.id.beta4);
+        beta4.setText(String.format("%6.2f", betaBuffer[3]));
+
+    }
+
+    private void updateTheta() {
+        TextView theta1 = (TextView) findViewById(R.id.theta1);
+        theta1.setText(String.format("%6.2f", thetaBuffer[0]));
+        TextView theta2 = (TextView) findViewById(R.id.theta2);
+        theta2.setText(String.format("%6.2f", thetaBuffer[1]));
+        TextView theta3 = (TextView) findViewById(R.id.theta3);
+        theta3.setText(String.format("%6.2f", thetaBuffer[2]));
+        TextView theta4 = (TextView) findViewById(R.id.theta4);
+        theta4.setText(String.format("%6.2f", thetaBuffer[3]));
+
+
+    }
 
     //--------------------------------------
     // File I/O

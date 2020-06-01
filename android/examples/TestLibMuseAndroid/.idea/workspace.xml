@@ -16,24 +16,36 @@
       <change beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileSnapshots.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/taskArtifacts.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/taskArtifacts.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/choosemuse/example/libmuse/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/choosemuse/example/libmuse/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi/values.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi/values.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$10.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$11.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$12.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$13.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$14.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$7.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$8.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$9.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$ConnectionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$ConnectionListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$DataListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$DataListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$MuseL.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$MuseL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/R$id.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/R$layout.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/R$layout.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/R$menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/R$menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/R$string.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/R$string.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/R$style.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/R$style.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/debug_d83ea392f7f196f161b772446570c04c74d941b1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/debug_d83ea392f7f196f161b772446570c04c74d941b1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values/values.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values/values.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/symbols/debug/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/symbols/debug/R.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/choosemuse/example/libmuse/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/choosemuse/example/libmuse/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +56,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="05157df508775d1e" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_API_Q" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -65,8 +77,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/choosemuse/example/libmuse/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-540">
-              <caret line="714" column="30" selection-start-line="714" selection-start-column="30" selection-end-line="714" selection-end-column="30" />
+            <state relative-caret-position="153">
+              <caret line="816" column="56" selection-start-line="816" selection-start-column="56" selection-end-line="816" selection-end-column="56" />
               <folding>
                 <element signature="e#0#79#0" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -166,8 +178,30 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-596">
-              <caret line="155" column="17" selection-start-line="155" selection-start-column="17" selection-end-line="155" selection-end-column="17" />
+            <state relative-caret-position="460">
+              <caret line="216" selection-start-line="216" selection-end-line="216" />
+              <folding>
+                <element signature="e#805#822#0" expanded="true" />
+                <element signature="e#990#1010#0" expanded="true" />
+                <element signature="e#1224#1240#0" expanded="true" />
+                <element signature="e#1471#1490#0" expanded="true" />
+                <element signature="e#1653#1666#0" expanded="true" />
+                <element signature="e#3145#3160#0" expanded="true" />
+                <element signature="e#3598#3616#0" expanded="true" />
+                <element signature="e#3870#3888#0" expanded="true" />
+                <element signature="e#4100#4118#0" expanded="true" />
+                <element signature="e#4368#4387#0" expanded="true" />
+                <element signature="e#5790#5810#0" expanded="true" />
+                <element signature="e#6763#6781#0" expanded="true" />
+                <element signature="e#7036#7054#0" expanded="true" />
+                <element signature="e#7273#7293#0" expanded="true" />
+                <element signature="e#7729#7747#0" expanded="true" />
+                <element signature="e#8003#8021#0" expanded="true" />
+                <element signature="e#8735#8752#0" expanded="true" />
+                <element signature="e#8980#8999#0" expanded="true" />
+                <element signature="e#9304#9319#0" expanded="true" />
+                <element signature="e#9558#9578#0" expanded="true" />
+              </folding>
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
@@ -188,6 +222,7 @@
       <find>Muse</find>
       <find>onResponse</find>
       <find>sendReq</find>
+      <find>updateAlp</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -199,6 +234,7 @@
         <option value="$USER_HOME$/AndroidStudio/DeviceExplorer/samsung-sm_g920f-05157df508775d1e/sdcard/Download/muse_data.txt" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/choosemuse/example/libmuse/MainActivity.java" />
       </list>
     </option>
@@ -355,9 +391,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4978038" visible="true" weight="0.053952992" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4978038" visible="true" weight="0.17040598" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" sideWeight="0.5021962" side_tool="true" weight="0.098824784" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -594,43 +631,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/choosemuse/example/libmuse/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-540">
-          <caret line="714" column="30" selection-start-line="714" selection-start-column="30" selection-end-line="714" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#79#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#8924#8940#0" expanded="true" />
-            <element signature="e#9730#9744#0" expanded="true" />
-            <element signature="e#11006#11213#0" expanded="true" />
-            <element signature="e#11212#11213#0" expanded="true" />
-            <element signature="e#11215#11381#0" expanded="true" />
-            <element signature="e#11380#11381#0" expanded="true" />
-            <element signature="e#11761#11961#0" expanded="true" />
-            <element signature="e#11960#11961#0" expanded="true" />
-            <element signature="e#11963#12167#0" expanded="true" />
-            <element signature="e#12166#12167#0" expanded="true" />
-            <element signature="e#18328#18548#0" expanded="true" />
-            <element signature="e#18547#18548#0" expanded="true" />
-            <element signature="e#18550#18774#0" expanded="true" />
-            <element signature="e#18773#18774#0" expanded="true" />
-            <element signature="e#19101#19102#0" expanded="true" />
-            <element signature="e#19172#19173#0" expanded="true" />
-            <element signature="e#24065#24494#0" expanded="true" />
-            <element signature="e#24493#24494#0" expanded="true" />
-            <element signature="e#24914#24946#0" expanded="true" />
-            <element signature="e#24980#25018#0" expanded="true" />
-            <element signature="e#25059#25096#0" expanded="true" />
-            <element signature="e#26411#27467#0" expanded="true" />
-            <element signature="e#27405#27423#0" expanded="true" />
-            <element signature="e#27466#27467#0" expanded="true" />
-            <element signature="e#37275#37626#0" expanded="true" />
-            <element signature="e#37625#37626#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Android/Sdk/sources/android-25/java/util/HashMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3762">
@@ -694,11 +694,70 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-596">
-          <caret line="155" column="17" selection-start-line="155" selection-start-column="17" selection-end-line="155" selection-end-column="17" />
+        <state relative-caret-position="460">
+          <caret line="216" selection-start-line="216" selection-end-line="216" />
+          <folding>
+            <element signature="e#805#822#0" expanded="true" />
+            <element signature="e#990#1010#0" expanded="true" />
+            <element signature="e#1224#1240#0" expanded="true" />
+            <element signature="e#1471#1490#0" expanded="true" />
+            <element signature="e#1653#1666#0" expanded="true" />
+            <element signature="e#3145#3160#0" expanded="true" />
+            <element signature="e#3598#3616#0" expanded="true" />
+            <element signature="e#3870#3888#0" expanded="true" />
+            <element signature="e#4100#4118#0" expanded="true" />
+            <element signature="e#4368#4387#0" expanded="true" />
+            <element signature="e#5790#5810#0" expanded="true" />
+            <element signature="e#6763#6781#0" expanded="true" />
+            <element signature="e#7036#7054#0" expanded="true" />
+            <element signature="e#7273#7293#0" expanded="true" />
+            <element signature="e#7729#7747#0" expanded="true" />
+            <element signature="e#8003#8021#0" expanded="true" />
+            <element signature="e#8735#8752#0" expanded="true" />
+            <element signature="e#8980#8999#0" expanded="true" />
+            <element signature="e#9304#9319#0" expanded="true" />
+            <element signature="e#9558#9578#0" expanded="true" />
+          </folding>
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/choosemuse/example/libmuse/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="816" column="56" selection-start-line="816" selection-start-column="56" selection-end-line="816" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#79#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#8924#8940#0" expanded="true" />
+            <element signature="e#9730#9744#0" expanded="true" />
+            <element signature="e#11006#11213#0" expanded="true" />
+            <element signature="e#11212#11213#0" expanded="true" />
+            <element signature="e#11215#11381#0" expanded="true" />
+            <element signature="e#11380#11381#0" expanded="true" />
+            <element signature="e#11761#11961#0" expanded="true" />
+            <element signature="e#11960#11961#0" expanded="true" />
+            <element signature="e#11963#12167#0" expanded="true" />
+            <element signature="e#12166#12167#0" expanded="true" />
+            <element signature="e#18328#18548#0" expanded="true" />
+            <element signature="e#18547#18548#0" expanded="true" />
+            <element signature="e#18550#18774#0" expanded="true" />
+            <element signature="e#18773#18774#0" expanded="true" />
+            <element signature="e#19101#19102#0" expanded="true" />
+            <element signature="e#19172#19173#0" expanded="true" />
+            <element signature="e#24065#24494#0" expanded="true" />
+            <element signature="e#24493#24494#0" expanded="true" />
+            <element signature="e#24914#24946#0" expanded="true" />
+            <element signature="e#24980#25018#0" expanded="true" />
+            <element signature="e#25059#25096#0" expanded="true" />
+            <element signature="e#26411#27467#0" expanded="true" />
+            <element signature="e#27405#27423#0" expanded="true" />
+            <element signature="e#27466#27467#0" expanded="true" />
+            <element signature="e#37275#37626#0" expanded="true" />
+            <element signature="e#37625#37626#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">
