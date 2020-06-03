@@ -246,6 +246,9 @@ public class MainActivity extends Activity implements OnClickListener {
     JSONObject jsonObject;
 
     ArrayList<Double> engagementArray = new ArrayList<>();
+    ArrayList<Double> tbrArray = new ArrayList<>();
+    ArrayList<Double> fatigueArray1 = new ArrayList<>();
+
 
     long startTime;
     long endTime;
@@ -376,34 +379,70 @@ public class MainActivity extends Activity implements OnClickListener {
 
         //electrodes on the forehead
         double betaAverage = (betaBuffer[1] + betaBuffer[2]) / 2;
+        Log.i(TAG, "betaAverage " + betaAverage);
         double alphaAverage = (alphaBuffer[1] + alphaBuffer[2]) / 2;
         double thetaAverage = (thetaBuffer[1] + thetaBuffer[2]) / 2;
 
         double engagementLevel = betaAverage / alphaAverage + thetaAverage;
         //distracted : a while loop to decrement or increment Hue gradually
 
+        double tbr = thetaAverage / betaAverage;
+        Log.i(TAG, "tbr " + tbr);
+
+        //increase
+        double fatigueRatio1 = (alphaAverage + thetaAverage) / betaAverage;
+
+
         //keep adding elements into the array until it is full with 1000
         //TODO: 2-3 minutes computing the average
-        if (engagementArray.size() < 500 ) {
-            engagementArray.add(engagementLevel);
+        if (engagementArray.size() < 500 && tbrArray.size() < 500) {
+            if (!Double.isNaN(engagementLevel)) {
+                engagementArray.add(engagementLevel);
+            }
+
+            if (!Double.isNaN(tbr)) {
+                tbrArray.add(tbr);
+            }
+
         }
 
 
-        if (engagementArray.size() == 500) {
+        if (engagementArray.size() == 500 && tbrArray.size() == 500) {
 
             double sum = 0;
+            double tbr_sum = 0;
             double engagementAverage = 0;
+            double tbrAverage = 0;
+            //double fatigueAverage1 = 0;
+            //double fatigueAverage2 = 0;
+            //double fatigue_sum1 = 0;
+            //double fatigue_sum2 = 0;
+
+
+
             //TODO:calculate an average of all 1000 engagements
 
             for(int n=0; n < engagementArray.size(); n++) {
-                sum += engagementArray.get(n);
+
+                if (!Double.isNaN(engagementArray.get(n))) {
+                    sum += engagementArray.get(n);
+                }
+
+                if (!Double.isNaN(tbrArray.get(n))) {
+                    tbr_sum += engagementArray.get(n);
+                }
             }
 
 
             engagementAverage = sum /engagementArray.size();
 
+            Log.i(TAG, "engagementAverage " + engagementAverage);
+            tbrAverage = tbr_sum / tbrArray.size();
+            Log.i(TAG, "tbrAverage " + tbrAverage);
+
 
             engagementArray.clear();
+            tbrArray.clear();
 
             //TODO:find out an strategy to reduce saturation
             //TODO:check how blue the 46920 is and how much it can increase remaining blue
