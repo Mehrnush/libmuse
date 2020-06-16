@@ -229,6 +229,11 @@ public class MainActivity extends Activity implements OnClickListener {
     //private final AtomicReference<MuseFileWriter> fileWriter = new AtomicReference<>();
     private final AtomicReference<OutputStreamWriter> fileWriter = new AtomicReference<>();
     private final AtomicReference<FileOutputStream> fileWriter2 = new AtomicReference<>();
+
+    private final AtomicReference<OutputStreamWriter> fileWriter_ = new AtomicReference<>();
+    private final AtomicReference<FileOutputStream> fileWriter2_ = new AtomicReference<>();
+
+
     /**
      * We don't want file operations to slow down the UI, so we will defer those file operations
      * to a handler on a separate thread.
@@ -241,7 +246,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 
     //192.168.178.161
-    String url = "http://192.168.0.100/api/2PmPIT8bygMPV9M3WFKLHRLJ8zzep0wHycysuq29/lights/4/state";
+    String url = "http://192.168.178.54/api/2PmPIT8bygMPV9M3WFKLHRLJ8zzep0wHycysuq29/lights/4/state";
     Map<String, Object> params = new HashMap<String, Object>();
     JSONObject jsonObject;
 
@@ -363,6 +368,10 @@ public class MainActivity extends Activity implements OnClickListener {
 
     public void changeTheLight() {
 
+        String dataString = "";
+
+        Log.i(TAG, "chang the light is called!");
+
         /**value between 0 and 65535. Both 0 and 65535 are red,
          *
          *
@@ -371,19 +380,30 @@ public class MainActivity extends Activity implements OnClickListener {
 
         //TODO:check how often the packet comes
 
-        startTime = System.currentTimeMillis();
+
 
 
         //Map<String ,String> params = new HashMap<String, String>()
 
 
         //electrodes on the forehead
-        double betaAverage = (betaBuffer[1] + betaBuffer[2]) / 2;
+        double betaAverage = (betaBuffer[2] + betaBuffer[3]) / 2;
+        startTime = System.currentTimeMillis();
+        writeDataPacketToFile2("betaAverage," + startTime + "," + betaAverage + "\n");
         Log.i(TAG, "betaAverage " + betaAverage);
-        double alphaAverage = (alphaBuffer[1] + alphaBuffer[2]) / 2;
-        double thetaAverage = (thetaBuffer[1] + thetaBuffer[2]) / 2;
+
+        double alphaAverage = (alphaBuffer[2] + alphaBuffer[3]) / 2;
+        startTime = System.currentTimeMillis();
+        writeDataPacketToFile2("alphaAverage," + startTime + ","  + alphaAverage + "\n");
+
+        double thetaAverage = (thetaBuffer[2] + thetaBuffer[3]) / 2;
+        startTime = System.currentTimeMillis();
+        writeDataPacketToFile2("thetaAverage," + startTime + "," + thetaAverage + "\n");
+
 
         double engagementLevel = betaAverage / alphaAverage + thetaAverage;
+        startTime = System.currentTimeMillis();
+        writeDataPacketToFile2("engagementLevel," + startTime + "," +  engagementLevel +"\n");
         //distracted : a while loop to decrement or increment Hue gradually
 
         double tbr = thetaAverage / betaAverage;
@@ -395,14 +415,15 @@ public class MainActivity extends Activity implements OnClickListener {
 
         //keep adding elements into the array until it is full with 1000
         //TODO: 2-3 minutes computing the average
-        if (engagementArray.size() < 500 && tbrArray.size() < 500) {
-            if (!Double.isNaN(engagementLevel)) {
-                engagementArray.add(engagementLevel);
-            }
+        //&& fatigueArray1.size() < 500
+        if (engagementArray.size() < 500 && tbrArray.size() < 500 ) {
 
-            if (!Double.isNaN(tbr)) {
+                engagementArray.add(engagementLevel);
+                Log.i(TAG, "engagementLevel added to Array " + engagementLevel);
+
                 tbrArray.add(tbr);
-            }
+
+                fatigueArray1.add(fatigueRatio1);
 
         }
 
@@ -413,9 +434,9 @@ public class MainActivity extends Activity implements OnClickListener {
             double tbr_sum = 0;
             double engagementAverage = 0;
             double tbrAverage = 0;
-            //double fatigueAverage1 = 0;
+            double fatigueAverage1 = 0;
             //double fatigueAverage2 = 0;
-            //double fatigue_sum1 = 0;
+            double fatigue_sum1 = 0;
             //double fatigue_sum2 = 0;
 
 
@@ -431,14 +452,24 @@ public class MainActivity extends Activity implements OnClickListener {
                 if (!Double.isNaN(tbrArray.get(n))) {
                     tbr_sum += engagementArray.get(n);
                 }
+
+                if (!Double.isNaN(fatigueArray1.get(n))) {
+                    fatigue_sum1 += fatigueArray1.get(n);
+                }
+
             }
 
 
             engagementAverage = sum /engagementArray.size();
-
             Log.i(TAG, "engagementAverage " + engagementAverage);
+
+
             tbrAverage = tbr_sum / tbrArray.size();
             Log.i(TAG, "tbrAverage " + tbrAverage);
+
+            fatigueAverage1 = fatigue_sum1 / fatigueArray1.size();
+            Log.i(TAG, "fatigueAverage "+ fatigueAverage1);
+
 
 
             engagementArray.clear();
@@ -449,12 +480,12 @@ public class MainActivity extends Activity implements OnClickListener {
 
             /**case 1: good concentration
              * */
-            if (engagementAverage >= 0.5) {
+            if (engagementAverage >= 0.54 || tbrAverage <= 0.5) {
                 Log.i(TAG, "good concentration");
 
                 //TODO:how strong is sat:180 in a white room → need to be tested in the room
-                if(sat > 180) {
-                    sat = 180;
+                if(sat > 200) {
+                    sat = 200;
                     Log.i(TAG, "sat is: "+ sat);
                     params.put("sat", sat);
                     jsonObject = new JSONObject(params);
@@ -472,8 +503,11 @@ public class MainActivity extends Activity implements OnClickListener {
                 if (hue < 46920) {
                     //increase saturation gradually to help staying focused
                     hue += 500;
+                    sat += 10;
                     Log.i(TAG, "hue is(good concentration): "+ hue);
+                    Log.i(TAG, "sat is (good concentration)" + sat);
                     params.put("hue", hue);
+                    params.put("sat", sat);
                     jsonObject = new JSONObject(params);
                     sendRequest();
                 }
@@ -492,7 +526,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
             //TODO: which number represents the best engagement?
             /**case 2: not concentrated enough*/
-            if (0.3 <= engagementAverage && engagementAverage <= 0.5) {
+            if (0.3 <= engagementAverage && engagementAverage <= 0.5 || tbrAverage > 0.5 && tbrAverage < 0.8) {
 
                 //TODO: maybe add some time measuremnet hier, if the person be hier more than 5 minutes then add orange?
                 Log.i(TAG, "not enough concentrated");
@@ -529,20 +563,22 @@ public class MainActivity extends Activity implements OnClickListener {
              *
              *
              */
-            if (engagementAverage <= 0.2) {
+            if (engagementAverage <= 0.2 || tbrAverage >= 0.8) {
                 Log.i(TAG, "very poor concentration");
 
                 //TODO:Should I increase saturation if one stays here for long? → add time
                 if (hue < 65535) {
                     //change the hue and saturation both to bring back to focus
-                    hue += 20000;
+                    hue = 65535;
+                    sat = 170;
                     params.put("hue", hue);
+                    params.put("sat ",sat);
                     Log.i(TAG, "hue is(very poor): "+ hue);
                     jsonObject = new JSONObject(params);
                     sendRequest();
                 }
 
-                if (sat > 170) {
+               /* if (sat > 170) {
                     sat = 170;
                     params.put("sat", sat);
                     jsonObject = new JSONObject(params);
@@ -550,11 +586,11 @@ public class MainActivity extends Activity implements OnClickListener {
                 }
 
                 if (sat < 170) {
-                    sat += 10;
+                    sat = 170;
                     params.put("sat", sat);
                     jsonObject = new JSONObject();
                     sendRequest();
-                }
+                }*/
             }
         }
     }
@@ -783,6 +819,7 @@ public class MainActivity extends Activity implements OnClickListener {
             Log.i(TAG, "Muse disconnected:" + muse.getName());
             // Save the data file once streaming has stopped.
             saveFile();
+            saveFile2();
             // We have disconnected from the headband, so set our cached copy to null.
             this.muse = null;
 
@@ -1126,11 +1163,17 @@ public class MainActivity extends Activity implements OnClickListener {
             Looper.prepare();
             fileHandler.set(new Handler());
             //final File dir = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
-            File dir = new File("//sdcard//Download//");
+            File dir = new File("//sdcard//Download//muse_data//");
             final File file = new File(dir, "muse_data.txt");
             final File file2 = new File(dir, "quality_report.txt");
             try {
                 file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                file2.createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -1146,9 +1189,14 @@ public class MainActivity extends Activity implements OnClickListener {
             }
 
             Log.i(TAG, "Writing data to: " + file.getAbsolutePath());
+            Log.i(TAG, "Writing data to: " + file2.getAbsolutePath());
             //fileWriter.set(MuseFileFactory.getMuseFileWriter(file));
             OutputStreamWriter fos = null;
             FileOutputStream fOut = null;
+
+            OutputStreamWriter fos2 = null;
+            FileOutputStream fOut2 = null;
+
             try {
                 fOut = new FileOutputStream(file);
                 fos = new OutputStreamWriter(fOut);
@@ -1157,10 +1205,30 @@ public class MainActivity extends Activity implements OnClickListener {
                 e.printStackTrace();
                 Log.i(TAG, "muse_data is not open");
             }
+
+            try {
+                fOut2 = new FileOutputStream(file2);
+                fos2 = new OutputStreamWriter(fOut2);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.i(TAG, "quality_report is not open");
+            }
+
+
+
             Log.i(TAG, "muse_data is open and written to:");
             fileWriter.set(fos);
             fileWriter2.set(fOut);
+
+
             writeDataPacketToFile("data_type,timestamp,EEG1,EEG2,EEG3,EEG4\n");
+
+            fileWriter_.set(fos2);
+            fileWriter2_.set(fOut2);
+
+            writeDataPacketToFile2("data_type, timestamp,value\n");
+
             Looper.loop();
         }
     };
@@ -1204,6 +1272,27 @@ public class MainActivity extends Activity implements OnClickListener {
         }
     }
 
+    private void writeDataPacketToFile2(final String s) {
+        Handler h = fileHandler.get();
+        if (h != null) {
+            h.post(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        FileOutputStream w = fileWriter2_.get();
+                        OutputStreamWriter w2 = fileWriter_.get();
+                        w2.write(s);
+                        w.flush();
+                        w2.flush();
+                        Log.i(TAG, "data is written to the file2");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+    }
+
     /**
      * Flushes all the data to the file and closes the file writer.
      */
@@ -1239,6 +1328,42 @@ public class MainActivity extends Activity implements OnClickListener {
             });
         }
     }
+
+
+    private void saveFile2() {
+        Handler h = fileHandler.get();
+        if (h != null) {
+            h.post(new Runnable() {
+                @Override
+                public void run() {
+                    OutputStreamWriter w = fileWriter_.get();
+                    FileOutputStream w2 = fileWriter2_.get();
+                    // Annotation strings can be added to the file to
+                    // give context as to what is happening at that point in
+                    // time.  An annotation can be an arbitrary string or
+                    // may include additional AnnotationData.
+                    //w.addAnnotationString(0, "Disconnected");
+                    //w.flush();
+                    //w.close();
+                    if (w != null && w2 != null) {
+                        try {
+                            w.flush();
+                            w2.flush();
+                            w.close();
+                            w2.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            Log.i(TAG, "muse_data is not closed");
+                        }
+                        Log.i(TAG, "muse_data is closed");
+                    }
+
+                }
+            });
+        }
+    }
+
+
 
     /**
      * Reads the provided .muse file and prints the data to the logcat.
