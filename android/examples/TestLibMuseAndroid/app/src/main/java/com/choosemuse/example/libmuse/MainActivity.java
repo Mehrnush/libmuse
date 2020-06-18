@@ -199,6 +199,9 @@ public class MainActivity extends Activity implements OnClickListener {
     private final double[] hci_precision = new double[4];
 
     private final double[] isGood = new double[4];
+    private boolean isGoodStale;
+
+    private boolean engagementLevel;
 
 
     /**
@@ -246,7 +249,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 
     //192.168.178.161
-    String url = "http://192.168.178.54/api/2PmPIT8bygMPV9M3WFKLHRLJ8zzep0wHycysuq29/lights/4/state";
+    String url = "http://192.168.178.64/api/2PmPIT8bygMPV9M3WFKLHRLJ8zzep0wHycysuq29/lights/4/state";
     Map<String, Object> params = new HashMap<String, Object>();
     JSONObject jsonObject;
 
@@ -368,6 +371,13 @@ public class MainActivity extends Activity implements OnClickListener {
 
     public void changeTheLight() {
 
+        long now = System.nanoTime();
+        long start1 = 0;
+        long passed = 0;
+        long timeAdded = 0;
+
+        Log.i(TAG, "nanoTime " + now);
+
         String dataString = "";
 
         Log.i(TAG, "chang the light is called!");
@@ -406,34 +416,41 @@ public class MainActivity extends Activity implements OnClickListener {
         writeDataPacketToFile2("engagementLevel," + startTime + "," +  engagementLevel +"\n");
         //distracted : a while loop to decrement or increment Hue gradually
 
-        double tbr = thetaAverage / betaAverage;
+       /* double tbr = thetaAverage / betaAverage;
+        startTime = System.currentTimeMillis();
         Log.i(TAG, "tbr " + tbr);
+        writeDataPacketToFile2("tbr," + startTime + "," + tbr +"\n");*/
 
         //increase
         double fatigueRatio1 = (alphaAverage + thetaAverage) / betaAverage;
+        Log.i(TAG, "fatigueratio1" + fatigueRatio1);
+        startTime = System.currentTimeMillis();
+        writeDataPacketToFile2("fatigureRation1," + startTime + "," + fatigueRatio1 + "\n");
 
 
         //keep adding elements into the array until it is full with 1000
         //TODO: 2-3 minutes computing the average
         //&& fatigueArray1.size() < 500
-        if (engagementArray.size() < 500 && tbrArray.size() < 500 ) {
+        //&& tbrArray.size() < 500
+        if (engagementArray.size() < 500 && fatigueArray1.size() < 500 ) {
 
                 engagementArray.add(engagementLevel);
                 Log.i(TAG, "engagementLevel added to Array " + engagementLevel);
 
-                tbrArray.add(tbr);
+                //tbrArray.add(tbr);
 
                 fatigueArray1.add(fatigueRatio1);
 
         }
 
 
-        if (engagementArray.size() == 500 && tbrArray.size() == 500) {
+        //tbrArray.size() == 500
+        if (engagementArray.size() == 500 && fatigueArray1.size() == 500) {
 
             double sum = 0;
-            double tbr_sum = 0;
+            //double tbr_sum = 0;
             double engagementAverage = 0;
-            double tbrAverage = 0;
+            //double tbrAverage = 0;
             double fatigueAverage1 = 0;
             //double fatigueAverage2 = 0;
             double fatigue_sum1 = 0;
@@ -449,9 +466,9 @@ public class MainActivity extends Activity implements OnClickListener {
                     sum += engagementArray.get(n);
                 }
 
-                if (!Double.isNaN(tbrArray.get(n))) {
+              /*  if (!Double.isNaN(tbrArray.get(n))) {
                     tbr_sum += engagementArray.get(n);
-                }
+                }*/
 
                 if (!Double.isNaN(fatigueArray1.get(n))) {
                     fatigue_sum1 += fatigueArray1.get(n);
@@ -460,32 +477,39 @@ public class MainActivity extends Activity implements OnClickListener {
             }
 
 
-            engagementAverage = sum /engagementArray.size();
+            engagementAverage = sum / engagementArray.size();
+            startTime = System.currentTimeMillis();
             Log.i(TAG, "engagementAverage " + engagementAverage);
+            writeDataPacketToFile2("engagementAverage," + startTime + "," + engagementAverage + "\n");
 
 
-            tbrAverage = tbr_sum / tbrArray.size();
-            Log.i(TAG, "tbrAverage " + tbrAverage);
+           /* tbrAverage = tbr_sum / tbrArray.size();
+            Log.i(TAG, "tbrAverage " + tbrAverage);*/
 
             fatigueAverage1 = fatigue_sum1 / fatigueArray1.size();
+            startTime = System.currentTimeMillis();
             Log.i(TAG, "fatigueAverage "+ fatigueAverage1);
-
+            writeDataPacketToFile2("fatigueAverage," + startTime + "," + fatigueAverage1 + "\n");
 
 
             engagementArray.clear();
-            tbrArray.clear();
+            //tbrArray.clear();
+            fatigueArray1.clear();
 
             //TODO:find out an strategy to reduce saturation
             //TODO:check how blue the 46920 is and how much it can increase remaining blue
 
             /**case 1: good concentration
              * */
-            if (engagementAverage >= 0.54 || tbrAverage <= 0.5) {
+            // tbrAverage <= 0.5
+            if (engagementAverage >= 0.54 || fatigueAverage1 <= 0.5) {
                 Log.i(TAG, "good concentration");
 
                 //TODO:how strong is sat:180 in a white room → need to be tested in the room
                 if(sat > 200) {
                     sat = 200;
+                    startTime = System.currentTimeMillis();
+                    writeDataPacketToFile2("sat," + startTime + "," + sat + "\n");
                     Log.i(TAG, "sat is: "+ sat);
                     params.put("sat", sat);
                     jsonObject = new JSONObject(params);
@@ -504,6 +528,9 @@ public class MainActivity extends Activity implements OnClickListener {
                     //increase saturation gradually to help staying focused
                     hue += 500;
                     sat += 10;
+                    startTime = System.currentTimeMillis();
+                    writeDataPacketToFile2("hue," + startTime + "," + hue + "\n");
+                    writeDataPacketToFile2("sat," + startTime + "," + sat + "\n");
                     Log.i(TAG, "hue is(good concentration): "+ hue);
                     Log.i(TAG, "sat is (good concentration)" + sat);
                     params.put("hue", hue);
@@ -516,6 +543,8 @@ public class MainActivity extends Activity implements OnClickListener {
                 if (hue > 46920) {
                     Log.i(TAG, "hue from red to blue in case of good concentration");
                     hue = 46920;
+                    startTime = System.currentTimeMillis();
+                    writeDataPacketToFile2("hue," + startTime + "," + hue + "\n");
                     Log.i(TAG, "hue is(good concentration): "+ hue);
                     params.put("hue", hue);
                     jsonObject = new JSONObject(params);
@@ -526,14 +555,38 @@ public class MainActivity extends Activity implements OnClickListener {
 
             //TODO: which number represents the best engagement?
             /**case 2: not concentrated enough*/
-            if (0.3 <= engagementAverage && engagementAverage <= 0.5 || tbrAverage > 0.5 && tbrAverage < 0.8) {
-
-                //TODO: maybe add some time measuremnet hier, if the person be hier more than 5 minutes then add orange?
+            // || tbrAverage > 0.5 && tbrAverage < 0.8
+            if (0.3 <= engagementAverage && engagementAverage <= 0.5 || fatigueAverage1 >= 0.5) {
                 Log.i(TAG, "not enough concentrated");
+
+                //in case the concentration rate wont change for 10 minutes
+
+                start1 = System.nanoTime();
+                Log.i(TAG, "start " + start1);
+                passed = start1 - now;
+                timeAdded += passed;
+                Log.i(TAG, "timeAdded " + timeAdded / Math.pow(10,9)) ;
+
+                //TODO:how long is it 0.1?
+                if ((timeAdded / Math.pow(10,9)) > 0.1 ) {
+                    hue = 65000;
+                    sat = 200;
+                    params.put("hue", hue);
+                    params.put("sat", sat);
+                    jsonObject = new JSONObject(params);
+                    sendRequest();
+                    Log.i(TAG, "more than 10 minutes " + hue);
+                    timeAdded = 0;
+
+                }
+
+
 
                 //TODO: If saturation is above 250? add some orange?
                 if (sat < 260) {
                     sat += 10;
+                    startTime = System.currentTimeMillis();
+                    writeDataPacketToFile2("sat," + startTime + "," + sat + "\n");
                     Log.i(TAG, "sat is: "+ sat);
                     params.put("sat", sat);
                     jsonObject = new JSONObject(params);
@@ -543,6 +596,8 @@ public class MainActivity extends Activity implements OnClickListener {
                 if (hue < 46920) {
                     //increase hue gradually to bring the person back to focus
                     hue += 500;
+                    startTime = System.currentTimeMillis();
+                    writeDataPacketToFile2("hue," + startTime + "," + hue + "\n");
                     Log.i(TAG, "hue is(not enough): "+ hue);
                     params.put("hue",hue);
                     jsonObject = new JSONObject(params);
@@ -552,6 +607,8 @@ public class MainActivity extends Activity implements OnClickListener {
                 //TODO:in case hue is not blue anymore: do we want to add some orange also hier?
                 if (hue > 46920) {
                     hue = 46920;
+                    startTime = System.currentTimeMillis();
+                    writeDataPacketToFile2("hue," + startTime + "," + hue + "\n");
                     params.put("hue", hue);
                     Log.i(TAG, "hue is(not enough): "+ hue);
                     jsonObject = new JSONObject(params);
@@ -563,7 +620,8 @@ public class MainActivity extends Activity implements OnClickListener {
              *
              *
              */
-            if (engagementAverage <= 0.2 || tbrAverage >= 0.8) {
+            //|| tbrAverage >= 0.8
+            if (engagementAverage <= 0.2 ) {
                 Log.i(TAG, "very poor concentration");
 
                 //TODO:Should I increase saturation if one stays here for long? → add time
@@ -571,6 +629,9 @@ public class MainActivity extends Activity implements OnClickListener {
                     //change the hue and saturation both to bring back to focus
                     hue = 65535;
                     sat = 170;
+                    startTime = System.currentTimeMillis();
+                    writeDataPacketToFile2("hue," + startTime + "," + hue + "\n");
+                    writeDataPacketToFile2("sat," + startTime + "," + sat + "\n");
                     params.put("hue", hue);
                     params.put("sat ",sat);
                     Log.i(TAG, "hue is(very poor): "+ hue);
@@ -940,6 +1001,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 Log.i(TAG, "is good:");
                 dataString += "isGood," + p.timestamp() + ",";
                 dataString += values;
+                isGoodStale = true;
                 break;
 
 
@@ -1082,6 +1144,9 @@ public class MainActivity extends Activity implements OnClickListener {
             if (thetaStale){
                 updateTheta();
             }
+         /*   if (isGoodStale) {
+                updateQuality();
+            }*/
             handler.postDelayed(tickUi, 1000 / 60);
         }
     };
@@ -1149,7 +1214,19 @@ public class MainActivity extends Activity implements OnClickListener {
 
     }
 
-    //--------------------------------------
+    private void updateQuality() {
+
+        TextView quality1 = (TextView) findViewById(R.id.quality1);
+        quality1.setText(String.format("%6.2f", isGood[1]));
+        TextView quality2 = (TextView) findViewById(R.id.quality2);
+        quality2.setText(String.format("%6.2f", isGood[2]));
+        TextView quality3 = (TextView) findViewById(R.id.quality3);
+        quality3.setText(String.format("%6.2f", isGood[3]));
+        TextView quality4 = (TextView) findViewById(R.id.quality4);
+        quality4.setText(String.format("%6.2f", isGood[4]));
+    }
+
+        //--------------------------------------
     // File I/O
 
 
