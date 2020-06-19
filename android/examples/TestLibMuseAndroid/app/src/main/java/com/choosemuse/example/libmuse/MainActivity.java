@@ -254,8 +254,11 @@ public class MainActivity extends Activity implements OnClickListener {
     JSONObject jsonObject;
 
     ArrayList<Double> engagementArray = new ArrayList<>();
-    ArrayList<Double> tbrArray = new ArrayList<>();
+    //ArrayList<Double> tbrArray = new ArrayList<>();
     ArrayList<Double> fatigueArray1 = new ArrayList<>();
+    ArrayList<Double> fatigueArray2 = new ArrayList();
+
+
 
 
     long startTime;
@@ -416,45 +419,61 @@ public class MainActivity extends Activity implements OnClickListener {
         writeDataPacketToFile2("engagementLevel," + startTime + "," +  engagementLevel +"\n");
         //distracted : a while loop to decrement or increment Hue gradually
 
-       /* double tbr = thetaAverage / betaAverage;
+       /** double tbr = thetaAverage / betaAverage;
         startTime = System.currentTimeMillis();
         Log.i(TAG, "tbr " + tbr);
         writeDataPacketToFile2("tbr," + startTime + "," + tbr +"\n");*/
 
-        //increase
+        /**
+        the significant increases in
+        α and (θ + α)/β, as well as the decrease in θ/α are found associated with the increasing
+        fatigue level,
+         **/
         double fatigueRatio1 = (alphaAverage + thetaAverage) / betaAverage;
-        Log.i(TAG, "fatigueratio1" + fatigueRatio1);
+        Log.i(TAG, "fatigueratio1 " + fatigueRatio1);
         startTime = System.currentTimeMillis();
-        writeDataPacketToFile2("fatigureRation1," + startTime + "," + fatigueRatio1 + "\n");
+        writeDataPacketToFile2("fatigureRatio1," + startTime + "," + fatigueRatio1 + "\n");
+
+        double fatigueRation2 = thetaAverage / alphaAverage;
+        Log.i(TAG, "fatigueRatio2 " + fatigueRation2);
+        startTime = System.currentTimeMillis();
+        writeDataPacketToFile2("fatigueRatio2," + startTime + "," + fatigueRation2 + "\n");
 
 
         //keep adding elements into the array until it is full with 1000
         //TODO: 2-3 minutes computing the average
         //&& fatigueArray1.size() < 500
         //&& tbrArray.size() < 500
-        if (engagementArray.size() < 500 && fatigueArray1.size() < 500 ) {
+        if (engagementArray.size() < 500 && fatigueArray1.size() < 500 && fatigueArray2.size() < 500 ) {
 
+            if (!Double.isNaN(engagementLevel)) {
                 engagementArray.add(engagementLevel);
                 Log.i(TAG, "engagementLevel added to Array " + engagementLevel);
-
+            }
                 //tbrArray.add(tbr);
-
+            if (!Double.isNaN(fatigueRatio1)) {
                 fatigueArray1.add(fatigueRatio1);
+            }
+
+            if (!Double.isNaN(fatigueRation2)) {
+                fatigueArray2.add(fatigueRation2);
+            }
 
         }
 
 
         //tbrArray.size() == 500
-        if (engagementArray.size() == 500 && fatigueArray1.size() == 500) {
+        if (engagementArray.size() == 500 && fatigueArray1.size() == 500 && fatigueArray2.size() == 500) {
 
             double sum = 0;
             //double tbr_sum = 0;
             double engagementAverage = 0;
             //double tbrAverage = 0;
             double fatigueAverage1 = 0;
-            //double fatigueAverage2 = 0;
+            double fatigueAverage2 = 0;
             double fatigue_sum1 = 0;
-            //double fatigue_sum2 = 0;
+            double fatigue_sum2 = 0;
+
 
 
 
@@ -462,18 +481,19 @@ public class MainActivity extends Activity implements OnClickListener {
 
             for(int n=0; n < engagementArray.size(); n++) {
 
-                if (!Double.isNaN(engagementArray.get(n))) {
+                //if (!Double.isNaN(engagementArray.get(n))) {
                     sum += engagementArray.get(n);
-                }
+                //}
 
               /*  if (!Double.isNaN(tbrArray.get(n))) {
                     tbr_sum += engagementArray.get(n);
                 }*/
 
-                if (!Double.isNaN(fatigueArray1.get(n))) {
+                //if (!Double.isNaN(fatigueArray1.get(n))) {
                     fatigue_sum1 += fatigueArray1.get(n);
-                }
+                //}
 
+                    fatigue_sum2 += fatigueArray2.get(n);
             }
 
 
@@ -482,27 +502,38 @@ public class MainActivity extends Activity implements OnClickListener {
             Log.i(TAG, "engagementAverage " + engagementAverage);
             writeDataPacketToFile2("engagementAverage," + startTime + "," + engagementAverage + "\n");
 
+            //Update the app
+          /*  TextView averageEng = (TextView) findViewById(R.id.averageEng);
+            averageEng.setText(String.format("%6.2.f", engagementAverage));*/
+
 
            /* tbrAverage = tbr_sum / tbrArray.size();
             Log.i(TAG, "tbrAverage " + tbrAverage);*/
 
             fatigueAverage1 = fatigue_sum1 / fatigueArray1.size();
             startTime = System.currentTimeMillis();
-            Log.i(TAG, "fatigueAverage "+ fatigueAverage1);
-            writeDataPacketToFile2("fatigueAverage," + startTime + "," + fatigueAverage1 + "\n");
+            Log.i(TAG, "fatigueAverage1 "+ fatigueAverage1);
+            writeDataPacketToFile2("fatigueAverage1," + startTime + "," + fatigueAverage1 + "\n");
+
+            fatigueAverage2 = fatigue_sum2 /fatigueArray2.size();
+            startTime = System.currentTimeMillis();
+            writeDataPacketToFile2("fatigueAverage2," + startTime + "," + fatigueAverage2 + "\n");
+            Log.i(TAG, "fatigueAverage2 "+ fatigueAverage2);
+
 
 
             engagementArray.clear();
             //tbrArray.clear();
             fatigueArray1.clear();
+            fatigueArray2.clear();
 
             //TODO:find out an strategy to reduce saturation
             //TODO:check how blue the 46920 is and how much it can increase remaining blue
 
             /**case 1: good concentration
              * */
-            // tbrAverage <= 0.5
-            if (engagementAverage >= 0.54 || fatigueAverage1 <= 0.5) {
+            // tbrAverage <= 0.5  || fatigueAverage1 <= 2.5
+            if (engagementAverage >= 0.6) {
                 Log.i(TAG, "good concentration");
 
                 //TODO:how strong is sat:180 in a white room → need to be tested in the room
@@ -555,8 +586,8 @@ public class MainActivity extends Activity implements OnClickListener {
 
             //TODO: which number represents the best engagement?
             /**case 2: not concentrated enough*/
-            // || tbrAverage > 0.5 && tbrAverage < 0.8
-            if (0.3 <= engagementAverage && engagementAverage <= 0.5 || fatigueAverage1 >= 0.5) {
+            // || tbrAverage > 0.5 && tbrAverage < 0.8  || fatigueAverage1 >= 2.5
+            if (0.3 <= engagementAverage && engagementAverage <= 0.5 ) {
                 Log.i(TAG, "not enough concentrated");
 
                 //in case the concentration rate wont change for 10 minutes
@@ -1144,9 +1175,9 @@ public class MainActivity extends Activity implements OnClickListener {
             if (thetaStale){
                 updateTheta();
             }
-         /*   if (isGoodStale) {
+            if (isGoodStale) {
                 updateQuality();
-            }*/
+            }
             handler.postDelayed(tickUi, 1000 / 60);
         }
     };
@@ -1217,13 +1248,13 @@ public class MainActivity extends Activity implements OnClickListener {
     private void updateQuality() {
 
         TextView quality1 = (TextView) findViewById(R.id.quality1);
-        quality1.setText(String.format("%6.2f", isGood[1]));
+        quality1.setText(String.format("%6.2f", isGood[0]));
         TextView quality2 = (TextView) findViewById(R.id.quality2);
-        quality2.setText(String.format("%6.2f", isGood[2]));
+        quality2.setText(String.format("%6.2f", isGood[1]));
         TextView quality3 = (TextView) findViewById(R.id.quality3);
-        quality3.setText(String.format("%6.2f", isGood[3]));
+        quality3.setText(String.format("%6.2f", isGood[2]));
         TextView quality4 = (TextView) findViewById(R.id.quality4);
-        quality4.setText(String.format("%6.2f", isGood[4]));
+        quality4.setText(String.format("%6.2f", isGood[3]));
     }
 
         //--------------------------------------

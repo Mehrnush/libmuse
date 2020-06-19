@@ -287,28 +287,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="0.0"
+            android:text="@string/init_val"
             android:textSize="16sp" />
+
         <TextView
             android:id="@+id/quality2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="0.0"
+            android:text="@string/init_val"
             android:textSize="16sp" />
+
         <TextView
             android:id="@+id/quality3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="0.0"
+            android:text="@string/init_val"
             android:textSize="16sp" />
+
         <TextView
             android:id="@+id/quality4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="0.0"
+            android:text="@string/init_val"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -330,7 +333,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="0.0"
+            android:text="@string/init_val"
             android:textSize="16sp" />
     </LinearLayout>
 
