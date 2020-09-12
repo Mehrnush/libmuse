@@ -6,6 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="hue" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="info" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
@@ -16,21 +17,31 @@
       <change beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileSnapshots.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/taskArtifacts.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/taskArtifacts.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$11.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$12.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$13.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$14.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$8.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$ConnectionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$ConnectionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$DataListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$DataListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$MuseL.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity$MuseL.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/choosemuse/example/libmuse/MainActivity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/debug_d83ea392f7f196f161b772446570c04c74d941b1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/debug_d83ea392f7f196f161b772446570c04c74d941b1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/choosemuse/example/libmuse/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/choosemuse/example/libmuse/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +52,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="05157df508775d1e" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_API_Q" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -73,45 +84,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/choosemuse/example/libmuse/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="1257" column="5" selection-start-line="1257" selection-start-column="5" selection-end-line="1257" selection-end-column="5" />
+            <state relative-caret-position="8319">
+              <caret line="972" column="8" selection-start-line="972" selection-start-column="8" selection-end-line="972" selection-end-column="8" />
               <folding>
                 <element signature="e#0#79#0" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="e#25348#25349#0" expanded="true" />
-                <element signature="e#25419#25420#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AndroidStudio/DeviceExplorer/samsung-sm_g920f-05157df508775d1e/sdcard/Download/muse_data/quality_report.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AndroidStudio/DeviceExplorer/samsung-sm_g920f-05157df508775d1e/sdcard/Download/muse_data.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AndroidStudio/DeviceExplorer/samsung-sm_g920f-05157df508775d1e/sdcard/Download/quality_report.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="3888">
-              <caret line="216" selection-start-line="216" selection-end-line="216" />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="android-designer2" />
         </entry>
       </file>
     </leaf>
@@ -130,18 +110,22 @@
       <find>onResponse</find>
       <find>sendReq</find>
       <find>updateAlp</find>
-      <find>disconne</find>
       <find>SDca</find>
       <find>saveFIle</find>
       <find>Downloa</find>
       <find>downloa</find>
-      <find>hue</find>
       <find>writeDataPacket</find>
       <find>change</find>
       <find>quality</find>
       <find>isGood</find>
       <find>fatigue</find>
       <find>fatigueArray</find>
+      <find>disconne</find>
+      <find>connect</find>
+      <find>muse_data</find>
+      <find>hue</find>
+      <find>sat</find>
+      <find>start</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -159,10 +143,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="74" />
-    <option name="y" value="1080" />
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
+    <option name="y" value="27" />
+    <option name="width" value="960" />
+    <option name="height" value="1053" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -170,11 +153,16 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
+            <path>
+              <item name="TestLibMuseAndroid" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
             <path>
               <item name="TestLibMuseAndroid" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
@@ -183,7 +171,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -297,11 +284,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="74" y="1107" width="1920" height="1053" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4978038" visible="true" weight="0.13568376" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.4978038" visible="true" weight="0.14369658" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" sideWeight="0.5021962" side_tool="true" weight="0.098824784" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -310,16 +296,16 @@
       <window_info id="Resources Explorer" order="7" weight="0.32975295" />
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="bottom" id="Run" order="0" sideWeight="0.4989259" weight="0.23464912" />
-      <window_info active="true" anchor="bottom" id="Logcat" order="1" sideWeight="0.4957265" visible="true" weight="0.28289473" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49519232" weight="0.27889714" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.22375397" />
       <window_info anchor="bottom" id="TODO" order="3" weight="0.3295562" />
       <window_info anchor="bottom" id="Find" order="4" sideWeight="0.49946293" weight="0.12938596" />
       <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.49946293" weight="0.32785088" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.3290735" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4935553" weight="0.24342105" />
-      <window_info anchor="bottom" id="Android Profiler" order="8" weight="0.32894737" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50427353" side_tool="true" weight="0.27302632" />
-      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" weight="0.32158118" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49412394" visible="true" weight="0.24013157" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" weight="0.32894737" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5048077" side_tool="true" weight="0.2800852" />
+      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" visible="true" weight="0.21527778" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" weight="0.32135418" />
       <window_info anchor="right" id="Theme Preview" order="3" />
@@ -401,13 +387,6 @@
     <entry file="file://$USER_HOME$/AndroidStudio/DeviceExplorer/samsung-sm_g920f-05157df508775d1e/sdcard/Download/new_muse_file.muse" />
     <entry file="file://$USER_HOME$/AndroidStudio/DeviceExplorer/samsung-sm_g920f-05157df508775d1e/sdcard/Download/new_muse_file.txt" />
     <entry file="file://$USER_HOME$/AndroidStudio/DeviceExplorer/samsung-sm_g920f-05157df508775d1e/sdcard/Download/new_muse_file.text" />
-    <entry file="jar://$PROJECT_DIR$/app/libs/libmuse_android.jar!/com/choosemuse/libmuse/MuseDataPacket.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1638">
-          <caret line="95" column="22" selection-start-line="95" selection-start-column="22" selection-end-line="95" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Android/Sdk/sources/android-25/org/json/JSONObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-10943">
@@ -593,43 +572,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AndroidStudio/DeviceExplorer/samsung-sm_g920f-05157df508775d1e/sdcard/Download/muse_data/quality_report.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AndroidStudio/DeviceExplorer/samsung-sm_g920f-05157df508775d1e/sdcard/Download/muse_data.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/AndroidStudio/DeviceExplorer/samsung-sm_g920f-05157df508775d1e/sdcard/Download/quality_report.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$USER_HOME$/AndroidStudio/DeviceExplorer/samsung-sm_g920f-05157df508775d1e/sdcard/Download/muse_data.txt" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="3888">
           <caret line="216" selection-start-line="216" selection-end-line="216" />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$USER_HOME$/AndroidStudio/DeviceExplorer/samsung-sm_g920f-05157df508775d1e/sdcard/Download/muse_data/muse_data.txt">
+    <entry file="file://$USER_HOME$/AndroidStudio/DeviceExplorer/samsung-sm_g920f-05157df508775d1e/sdcard/Download/muse_data/quality_report.txt" />
+    <entry file="file://$USER_HOME$/AndroidStudio/DeviceExplorer/samsung-sm_g920f-05157df508775d1e/sdcard/Download/muse_data/muse_data.txt" />
+    <entry file="jar://$PROJECT_DIR$/app/libs/libmuse_android.jar!/com/choosemuse/libmuse/MuseDataPacket.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="47" selection-start-line="1" selection-end-line="1" selection-end-column="19" />
+        <state relative-caret-position="228">
+          <caret line="95" column="22" selection-start-line="95" selection-start-column="22" selection-end-line="95" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/choosemuse/example/libmuse/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="1257" column="5" selection-start-line="1257" selection-start-column="5" selection-end-line="1257" selection-end-column="5" />
+        <state relative-caret-position="8319">
+          <caret line="972" column="8" selection-start-line="972" selection-start-column="8" selection-end-line="972" selection-end-column="8" />
           <folding>
             <element signature="e#0#79#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#25348#25349#0" expanded="true" />
-            <element signature="e#25419#25420#0" expanded="true" />
           </folding>
         </state>
       </provider>

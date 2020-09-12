@@ -1,0 +1,11 @@
+name,0_10,10_20,20_30,30_40,40_50,50_60
+matthias_schmitt,4,5,5,4,3,2
+solveig_andres,4,4,4,4,4,4
+daniel_tabellion,4,4,5,3,4,4
+paul_szymanski,4,5,4,4,4,5
+tobias_jungblutt,4,5,4,3,3,3
+kora_regik,5,5,4,5,4,5
+neuman_fakhar,5,5,5,4,4,4
+moritz_wolf,4,5,4,4,4,3
+marc_ruble,3,4,5,4,5,5
+xenia_klinge,5,4,4,5,0,0

@@ -1,0 +1,11 @@
+name,0_10,10_20,20_30,30_40,40_50,50_60
+marc_ruble,4,4,3,3,4,3
+moritz_wolf,4,3,3,4,4,3
+kora_regik,4,3,3,4,1,1
+solveig_andres,4,4,3,3,3,2
+daniel_tabellion,3,3,4,4,5,4
+neuman_fakhar,4,4,3,3,3,2
+xenia_klinge,4,5,5,5,0,0
+paul_szymanski,3,3,4,4,4,4
+tobias_jungblutt,2,3,4,4,3,3
+matthias_schmitt,5,5,3,2,2,3

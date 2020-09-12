@@ -1,0 +1,11 @@
+name,cognitive_dissonance,sea_monsters,videogames
+marc_ruble,10,13,13
+moritz_wolf,10,11,11
+kora_regik,9,10,0
+solveig_andres,8,11,7
+daniel_tabellion,12,10,12
+neuman_fakhar,3,7,5
+xenia_klinge,12,11,9
+paul_szymanski,11,10,12
+tobias_jungblutt,9,12,12
+matthias_schmitt,6,10,7

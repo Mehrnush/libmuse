@@ -1,0 +1,11 @@
+name,physically_exhausted_before,mentally_exhausted_before,sleep_quality_before,physically_exhausted_after,mentally_exhausted_after,comfortable_after,concentrated_after,temperature_after,satisfied_after
+matthias_schmitt,1,2,4,2,4,5,4,5,4
+solveig_andres,2,3,4,2,3,5,5,5,4
+daniel_tabellion,2,3,4,3,3,4,4,4,3
+paul_szymanski,3,2,3,2,3,4,5,4,4
+tobias_jungblutt,2,2,3,3,3,3,4,5,4
+kora_regik,2,2,4,1,1,5,5,4,5
+neuman_fakhar,1,1,2,5,5,5,4,4,4
+moritz_wolf,2,3,2,1,2,5,5,5,5
+marc_ruble,1,2,3,3,3,4,4,5,4
+xenia_klinge,2,2,3,2,3,4,5,5,5

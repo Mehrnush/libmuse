@@ -203,6 +203,8 @@ public class MainActivity extends Activity implements OnClickListener {
 
     private boolean engagementLevel;
 
+    double engagementAverage;
+
 
     /**
      * We will be updating the UI using a handler instead of in packet handlers because
@@ -249,7 +251,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 
     //192.168.178.161
-    String url = "http://192.168.178.64/api/2PmPIT8bygMPV9M3WFKLHRLJ8zzep0wHycysuq29/lights/4/state";
+    String url = "http://192.168.0.100/api/2PmPIT8bygMPV9M3WFKLHRLJ8zzep0wHycysuq29/lights/4/state";
     Map<String, Object> params = new HashMap<String, Object>();
     JSONObject jsonObject;
 
@@ -467,7 +469,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
             double sum = 0;
             //double tbr_sum = 0;
-            double engagementAverage = 0;
+            engagementAverage = 0;
             //double tbrAverage = 0;
             double fatigueAverage1 = 0;
             double fatigueAverage2 = 0;
@@ -502,6 +504,8 @@ public class MainActivity extends Activity implements OnClickListener {
             Log.i(TAG, "engagementAverage " + engagementAverage);
             writeDataPacketToFile2("engagementAverage," + startTime + "," + engagementAverage + "\n");
 
+            updateEngagementAverage();
+
             //Update the app
           /*  TextView averageEng = (TextView) findViewById(R.id.averageEng);
             averageEng.setText(String.format("%6.2.f", engagementAverage));*/
@@ -533,7 +537,7 @@ public class MainActivity extends Activity implements OnClickListener {
             /**case 1: good concentration
              * */
             // tbrAverage <= 0.5  || fatigueAverage1 <= 2.5
-            if (engagementAverage >= 0.6) {
+            if (engagementAverage > 0.549) {
                 Log.i(TAG, "good concentration");
 
                 //TODO:how strong is sat:180 in a white room → need to be tested in the room
@@ -587,7 +591,7 @@ public class MainActivity extends Activity implements OnClickListener {
             //TODO: which number represents the best engagement?
             /**case 2: not concentrated enough*/
             // || tbrAverage > 0.5 && tbrAverage < 0.8  || fatigueAverage1 >= 2.5
-            if (0.3 <= engagementAverage && engagementAverage <= 0.5 ) {
+            if (0.3 <= engagementAverage && engagementAverage <= 0.549 ) {
                 Log.i(TAG, "not enough concentrated");
 
                 //in case the concentration rate wont change for 10 minutes
@@ -614,7 +618,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 
                 //TODO: If saturation is above 250? add some orange?
-                if (sat < 260) {
+                if (sat < 250) {
                     sat += 10;
                     startTime = System.currentTimeMillis();
                     writeDataPacketToFile2("sat," + startTime + "," + sat + "\n");
@@ -1257,6 +1261,10 @@ public class MainActivity extends Activity implements OnClickListener {
         quality4.setText(String.format("%6.2f", isGood[3]));
     }
 
+    private void updateEngagementAverage() {
+        TextView engAverage = (TextView) findViewById(R.id.averageEng);
+        engAverage.setText(String.format("%6.2f", engagementAverage));
+    }
         //--------------------------------------
     // File I/O
 
