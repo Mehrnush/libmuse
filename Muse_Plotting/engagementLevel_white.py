@@ -3,7 +3,7 @@ import pandas as pd
 
 
 
-df = pd.read_csv('to_plot/white_light/matthias_schmitt_white_light_experiment/Matthias_white_quality_report.txt',
+df = pd.read_csv('data/white_light/matthias/quality_report.txt',
                  decimal=".", delimiter=",", float_precision='high')
 elevel = df.loc[df['data_type'] == 'engagementLevel']
 df_sorted = elevel.sort_values(by=["timestamp"])
@@ -16,7 +16,7 @@ df_sorted = df_sorted.dropna()
 fig = px.line(df_sorted, x='timestamp', y='value')
 fig.show()
 
-df = pd.read_csv('to_plot/white_light/daniel_white/daniel_white_quality_report.txt',
+df = pd.read_csv('data/white_light/daniel/quality_report.txt',
                  decimal=".", delimiter=",", float_precision='high')
 elevel = df.loc[df['data_type'] == 'engagementLevel']
 df_sorted = elevel.sort_values(by=["timestamp"])
@@ -29,7 +29,7 @@ df_sorted = df_sorted.dropna()
 fig = px.line(df_sorted, x='timestamp', y='value')
 fig.show()
 
-df = pd.read_csv('to_plot/white_light/kora_white/kora_white_quality_report.txt',
+df = pd.read_csv('data/white_light/kora/quality_report.txt',
                  decimal=".", delimiter=",", float_precision='high')
 elevel = df.loc[df['data_type'] == 'engagementLevel']
 df_sorted = elevel.sort_values(by=["timestamp"])
@@ -42,7 +42,7 @@ df_sorted = df_sorted.dropna()
 fig = px.line(df_sorted, x='timestamp', y='value')
 fig.show()
 
-df = pd.read_csv('to_plot/white_light/marc_white/marc_white_quality_report.txt',
+df = pd.read_csv('data/white_light/marc/quality_report.txt',
                  decimal=".", delimiter=",", float_precision='high')
 elevel = df.loc[df['data_type'] == 'engagementLevel']
 df_sorted = elevel.sort_values(by=["timestamp"])
@@ -55,7 +55,7 @@ df_sorted = df_sorted.dropna()
 fig = px.line(df_sorted, x='timestamp', y='value')
 fig.show()
 
-df = pd.read_csv('to_plot/white_light/moritz_white/moritz_white_quality_report.txt',
+df = pd.read_csv('data/white_light/moritz/quality_report.txt',
                  decimal=".", delimiter=",", float_precision='high')
 elevel = df.loc[df['data_type'] == 'engagementLevel']
 df_sorted = elevel.sort_values(by=["timestamp"])
@@ -68,7 +68,7 @@ df_sorted = df_sorted.dropna()
 fig = px.line(df_sorted, x='timestamp', y='value')
 fig.show()
 
-df = pd.read_csv('to_plot/white_light/Neuman_Fakhar_white/Nuamn_white_quality_report.txt',
+df = pd.read_csv('data/white_light/neuman/quality_report.txt',
                  decimal=".", delimiter=",", float_precision='high')
 elevel = df.loc[df['data_type'] == 'engagementLevel']
 df_sorted = elevel.sort_values(by=["timestamp"])
@@ -81,7 +81,7 @@ df_sorted = df_sorted.dropna()
 fig = px.line(df_sorted, x='timestamp', y='value')
 fig.show()
 
-df = pd.read_csv('to_plot/white_light/Paul_Szymanski_white_light_experiment/paul_white_quality_report.txt',
+df = pd.read_csv('data/white_light/paul/quality_report.txt',
                  decimal=".", delimiter=",", float_precision='high')
 elevel = df.loc[df['data_type'] == 'engagementLevel']
 df_sorted = elevel.sort_values(by=["timestamp"])
@@ -94,7 +94,7 @@ df_sorted = df_sorted.dropna()
 fig = px.line(df_sorted, x='timestamp', y='value')
 fig.show()
 
-df = pd.read_csv('to_plot/white_light/solveig_white/solveig_white_quality_report.txt',
+df = pd.read_csv('data/white_light/solveig/quality_report.txt',
                  decimal=".", delimiter=",", float_precision='high')
 elevel = df.loc[df['data_type'] == 'engagementLevel']
 df_sorted = elevel.sort_values(by=["timestamp"])
@@ -107,7 +107,7 @@ df_sorted = df_sorted.dropna()
 fig = px.line(df_sorted, x='timestamp', y='value')
 fig.show()
 
-df = pd.read_csv('to_plot/white_light/tobias_white/Tobias_white_quality_report.txt',
+df = pd.read_csv('data/white_light/tobias/quality_report.txt',
                  decimal=".", delimiter=",", float_precision='high')
 elevel = df.loc[df['data_type'] == 'engagementLevel']
 df_sorted = elevel.sort_values(by=["timestamp"])
@@ -120,7 +120,7 @@ df_sorted = df_sorted.dropna()
 fig = px.line(df_sorted, x='timestamp', y='value')
 fig.show()
 
-df = pd.read_csv('to_plot/white_light/xenia_white/xenia_white_quality_report.txt',
+df = pd.read_csv('data/white_light/xenia/quality_report.txt',
                  decimal=".", delimiter=",", float_precision='high')
 elevel = df.loc[df['data_type'] == 'engagementLevel']
 df_sorted = elevel.sort_values(by=["timestamp"])

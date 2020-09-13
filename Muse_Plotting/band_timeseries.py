@@ -1,7 +1,7 @@
 import plotly.express as px
 import pandas as pd
 
-df = pd.read_csv('to_plot/white_light/matthias_schmitt_white_light_experiment/Matthias_white_quality_report.txt')
+df = pd.read_csv('data/white_light/matthias/quality_report.txt')
 #calcualte the mean
 df_eeg_raw = df.loc[df['data_type'] == "beta_relative"]
 #df_mean = df['timestamp'].resample('10Min', how='mean')
