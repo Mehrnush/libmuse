@@ -12,6 +12,7 @@ eng_avg_with_interval_file_name = 'engagement_average_{}_minutes_interval.txt'
 
 participants = ['daniel', 'kora', 'marc', 'matthias', 'moritz', 'neuman', 'solveig', 'tobias', 'xenia']
 
+
 def to_minutes(data_frame):
     data_frame['timestamp'] -= data_frame['timestamp'].iloc[0]
     data_frame['timestamp'] /= 1000

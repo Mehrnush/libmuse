@@ -1,0 +1,11 @@
+name,cognitive_dissonance,sea_monsters,videogames
+marc,10,13,13
+moritz,10,11,11
+kora,9,10,0
+solveig,8,11,7
+daniel,12,10,12
+neuman,3,7,5
+xenia,12,11,9
+paul,11,10,12
+tobias,9,12,12
+matthias,6,10,7

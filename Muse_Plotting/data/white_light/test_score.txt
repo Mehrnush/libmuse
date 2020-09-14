@@ -1,0 +1,11 @@
+name,making_time_for_science,chinese_stretch,high_tech
+matthias,13,12,5
+solveig,11,12,9
+daniel,10,9,7
+paul,12,7,7
+tobias,10,10,6
+kora,9,8,8
+neuman,5,9,8
+moritz,10,12,5
+marc,11,8,6
+xenia,8,12,12
