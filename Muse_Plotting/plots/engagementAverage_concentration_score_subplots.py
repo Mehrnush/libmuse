@@ -8,7 +8,7 @@ from plots.plot_engagement_average_interval_white_and_blue import generate_plot_
 
 this_file = os.path.dirname(__file__)
 base_folder_plots = this_file
-eng_avg_concentration_score_file_name = "eng_avg_concentration_score_subplots.png"
+eng_avg_concentration_score_file_name = "{}_eng_avg_concentration_score_subplots.png"
 
 participants = ['daniel', 'kora', 'marc', 'matthias', 'moritz', 'neuman', 'solveig', 'tobias', 'xenia']
 
@@ -24,7 +24,6 @@ for p in participants:
     fig_eng_avg_interval = generate_plot_engagement_average_interval_blue_and_white(participant=p, interval=interval)
     for d in fig_eng_avg_interval.data:
         fig.add_trace(d, row=1, col=1)
-
 
     fig_hist_concentration = generate_plot_histogram_concentration(p)
     for d in fig_hist_concentration.data:
@@ -56,6 +55,6 @@ for p in participants:
             title='Score',
         ),)
 
-    plot_file_name = os.path.join(base_folder_plots, p, eng_avg_concentration_score_file_name)
+    plot_file_name = os.path.join(base_folder_plots, p, eng_avg_concentration_score_file_name.format(p))
     fig.write_image(file=plot_file_name, format='png', engine="kaleido")
     fig.show()

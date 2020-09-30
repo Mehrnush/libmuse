@@ -6,13 +6,12 @@ import os
 
 this_file = os.path.dirname(__file__)
 base_folder_plots = this_file
-base_folder_white = os.path.join(this_file, '../data/white_light')
 base_folder_blue = os.path.join(this_file, '../data/blue_light')
 eng_avg_with_interval_file_name = 'engagement_average_{}_minutes_interval.txt'
 saturation_file_name = 'saturation.txt'
-plot_eng_avg_and_sat_file_name = "engagement_average_{}_minutes_interval_and_saturation.png"
+plot_eng_avg_and_sat_file_name = "{}_engagement_average_{}_minutes_interval_and_saturation.png"
 
-participants = ['moritz', 'tobias']
+participants = ['daniel', 'kora', 'marc', 'matthias', 'moritz', 'neuman', 'solveig', 'tobias', 'xenia']
 
 
 def generate_plot_engagement_average_and_saturation(participant, interval=1):
@@ -50,7 +49,7 @@ def generate_plot_engagement_average_and_saturation(participant, interval=1):
         eng_avg_data_frame['timestamp'].iloc[-1] \
         if eng_avg_data_frame['timestamp'].iloc[-1] > sat_data_frame['timestamp'].iloc[-1] \
         else sat_data_frame['timestamp'].iloc[-1]
-    threshold = go.Scatter(x=[0, last_timestamp+10],
+    threshold = go.Scatter(x=[0, last_timestamp+1],
                            y=[0.549, 0.549],
                            mode="lines",
                            line_color="red",
@@ -68,7 +67,9 @@ def generate_plot_engagement_average_and_saturation(participant, interval=1):
             title="Engagement Level",
         ),
         yaxis2=dict(
-            title='Saturation'
+            title='Saturation',
+            tick0=200,
+            dtick=10
         )
     )
     return fig
@@ -78,6 +79,6 @@ if __name__ == "__main__":
     interval = 1
     for p in participants:
         plot = generate_plot_engagement_average_and_saturation(participant=p, interval=interval)
-        plot_file_name = os.path.join(base_folder_plots, p, plot_eng_avg_and_sat_file_name.format(interval))
+        plot_file_name = os.path.join(base_folder_plots, p, plot_eng_avg_and_sat_file_name.format(p, interval))
         plot.write_image(file=plot_file_name, format='png', engine="kaleido")
         plot.show()

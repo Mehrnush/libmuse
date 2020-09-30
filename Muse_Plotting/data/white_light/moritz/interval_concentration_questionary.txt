@@ -4,4 +4,3 @@ timestamp,value
 30,4
 40,4
 50,4
-60,3
